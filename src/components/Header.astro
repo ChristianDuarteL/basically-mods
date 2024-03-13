@@ -1,0 +1,31 @@
+---
+interface Link {
+    name: string;
+    link: string;
+}
+
+interface Props {
+	links?: Link[];
+}
+
+const { links } = Astro.props ;
+---
+
+<header class="w-full bg-blue-100 backdrop-blur-sm">
+    <nav class="w-[980px] mx-auto flex justify-between">
+        <a href="#" class="p-3">
+            Basically<span basically-suffix></span>.
+        </a>
+        <div class="flex">
+            {
+                links?.map(e => <a class="p-3" href={e.link}>{e.name}</a>)
+            }
+        </div>
+    </nav>
+</header>
+
+<style>
+    nav{
+        max-width: calc(100% - 2rem);
+    }    
+</style>

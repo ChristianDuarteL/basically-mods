@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+---
+
+<Layout title="Welcome to Astro.">
+	<Header
+		links={[
+			{
+				name: "Badges",
+				link: "#mods"
+			},
+			{
+				name: "Arrows",
+				link: "#mods"
+			},
+			{
+				name: "Signs",
+				link: "#mods"
+			},
+			{
+				name: "Devlog",
+				link: "#mods"
+			}
+		]}
+		client:load
+	></Header>
+	<main>
+		
+	</main>
+</Layout>
+
+<style>
+	main {
+		margin: auto;
+		padding: 1rem;
+		width: 800px;
+		max-width: calc(100% - 2rem);
+		color: #111;
+		font-size: 20px;
+		line-height: 1.6;
+	}
+</style>
