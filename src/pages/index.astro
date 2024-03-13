@@ -26,16 +26,21 @@ import Header from '../components/Header.astro';
 		]}
 	></Header>
 	<main>
-		<Section name="Badges"></Section>
-		<Section name="Arrows"></Section>
-		<Section name="Signs"></Section>
+		<Section name="Badges">
+			<div class="flex items-center justify-center min-h-full min-w-full bg-red-300"><h1>Badges</h1></div>
+		</Section>
+		<Section name="Arrows">
+			<div class="flex items-center justify-center min-h-full min-w-full bg-blue-300"><h1>Arrows</h1></div>
+		</Section>
+		<Section name="Signs">
+			<div class="flex items-center justify-center min-h-full min-w-full bg-green-300"><h1>Signs</h1></div>
+		</Section>
 	</main>
 </Layout>
 
 <style>
 	main {
 		margin: auto;
-		padding: 1rem;
 		width: 800px;
 		max-width: calc(100% - 2rem);
 		color: #111;
