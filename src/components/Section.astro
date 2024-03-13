@@ -1,0 +1,19 @@
+---
+interface Props {
+    name: string;
+}
+
+const { name } = Astro.props;
+---
+
+<section class="min-h-screen" data-section-name={name}>
+
+</section>
+
+<script>
+    import { checkIntersection } from "../function/section";
+    const elements = document.querySelectorAll(`[data-section-name]`);
+    elements && elements.forEach(element => {
+        element instanceof HTMLElement && checkIntersection(element);
+    });
+</script>

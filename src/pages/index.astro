@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Section from '../components/Section.astro';
 import Header from '../components/Header.astro';
 ---
 
@@ -23,10 +24,11 @@ import Header from '../components/Header.astro';
 				link: "#mods"
 			}
 		]}
-		client:load
 	></Header>
 	<main>
-		
+		<Section name="Badges"></Section>
+		<Section name="Arrows"></Section>
+		<Section name="Signs"></Section>
 	</main>
 </Layout>
 
