@@ -1,0 +1,26 @@
+---
+interface Props {
+    'class': string
+}
+
+---
+
+<div class={Astro.props.class}>
+    <div class="absolute" animatable-backdrop><slot name="backdrop"><div class="h-screen w-screen"></div></slot></div>
+    <slot></slot>
+</div>
+
+<script>
+    const tracking = document.querySelectorAll('[animatable-backdrop]');
+    window.tracking = tracking;
+    window.addEventListener('scroll', () => {
+        tracking.forEach(element => {
+            const b = element.getBoundingClientRect();
+            const delta = (window.screenY - b.top) / b.height;
+            if(delta != element.last_delta){
+                element.last_delta = (Math.max(Math.min(delta, 1), 0));
+                element.style.setProperty('--scroll', element.last_delta)
+            }
+        })
+    })
+</script>
