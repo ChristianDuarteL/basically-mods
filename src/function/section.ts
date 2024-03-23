@@ -4,11 +4,11 @@ export function checkIntersection (element: HTMLElement) {
     let options = {
         root: null,
         rootMargin: "0px",
-        threshold: .7
+        threshold: .5
     };
 
     let observer = new IntersectionObserver((entries) => {
-        if(entries[0].intersectionRatio >= .7){
+        if(entries[0].intersectionRatio >= .5){
             console.log(entries)
             const { sectionName } = element.dataset;
             currentSection = sectionName;

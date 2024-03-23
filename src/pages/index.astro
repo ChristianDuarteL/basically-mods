@@ -28,7 +28,8 @@ import Animatable from '../components/Animatable.astro';
 	></Header>
 	<main>
 		<Section name="Badges">
-			<Animatable class='flex items-center justify-center min-h-full min-w-full bg-red-300'>
+			<Animatable class='flex items-center justify-center min-h-full min-w-full bg-red-300 overflow-hidden'>
+				<div class="h-[200px] bg-black" slot="backdrop"></div>
 				<h1>Badges</h1>
 			</Animatable>
 		</Section>
@@ -44,12 +45,9 @@ import Animatable from '../components/Animatable.astro';
 </Layout>
 
 <style>
+	h1{
+		transform: scale(calc(var(--scroll, 0) * 200 + 1));
+	}
 	main {
-		margin: auto;
-		width: 800px;
-		max-width: calc(100% - 2rem);
-		color: #111;
-		font-size: 20px;
-		line-height: 1.6;
 	}
 </style>

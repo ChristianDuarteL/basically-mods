@@ -5,22 +5,27 @@ interface Props {
 
 ---
 
-<div class={Astro.props.class}>
-    <div class="absolute" animatable-backdrop><slot name="backdrop"><div class="h-screen w-screen"></div></slot></div>
+<div class={Astro.props.class} animatable-element>
+    <div class="absolute w-full h-full top-0" animatable-backdrop><slot name="backdrop"><div class="h-screen w-full"></div></slot></div>
     <slot></slot>
 </div>
 
 <script>
-    const tracking = document.querySelectorAll('[animatable-backdrop]');
-    window.tracking = tracking;
-    window.addEventListener('scroll', () => {
-        tracking.forEach(element => {
-            const b = element.getBoundingClientRect();
-            const delta = (window.screenY - b.top) / b.height;
-            if(delta != element.last_delta){
-                element.last_delta = (Math.max(Math.min(delta, 1), 0));
-                element.style.setProperty('--scroll', element.last_delta)
-            }
-        })
+    interface tracking_element {
+        last_delta: string | undefined;
+    }
+
+    const tracking: [HTMLElement, (HTMLElement & tracking_element)][] = [...document.querySelectorAll('[animatable-element]')].map(e => [e as HTMLElement, document.querySelector('[animatable-backdrop]').firstElementChild as (HTMLElement & tracking_element)]);
+    const updateScroll = () => tracking.forEach(element => {
+        const b = element[1].getBoundingClientRect();
+        const delta = Math.max(Math.min((window.screenY - b.top) / b.height, 1), 0).toFixed(4);
+        if(delta != element[1].last_delta){
+            element[1].last_delta = delta;
+            element[0].style.setProperty('--scroll', delta)
+        }
     })
+    window.addEventListener('scroll', () => {
+        updateScroll()
+    })
+    window.addEventListener('load', updateScroll)
 </script>
