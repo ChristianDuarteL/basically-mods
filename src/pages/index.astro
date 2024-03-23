@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Section from '../components/Section.astro';
 import Header from '../components/Header.astro';
+import Animatable from '../components/Animatable.astro';
 ---
 
 <Layout title="Welcome to Astro.">
@@ -27,10 +28,15 @@ import Header from '../components/Header.astro';
 	></Header>
 	<main>
 		<Section name="Badges">
-			<div class="flex items-center justify-center min-h-full min-w-full bg-red-300"><h1>Badges</h1></div>
+			<Animatable class='flex items-center justify-center min-h-full min-w-full bg-red-300 overflow-hidden'>
+				<div class="h-[200px] bg-black" slot="backdrop"></div>
+				<h1>Badges</h1>
+			</Animatable>
 		</Section>
 		<Section name="Arrows">
-			<div class="flex items-center justify-center min-h-[200vh] min-w-full bg-blue-300"><h1>Arrows</h1></div>
+			<Animatable  class="flex items-center justify-center min-h-[200vh] min-w-full bg-blue-300">
+				<h1>Arrows</h1>
+			</Animatable>
 		</Section>
 		<Section name="Signs">
 			<div class="flex items-center justify-center min-h-full min-w-full bg-green-300"><h1>Signs</h1></div>
@@ -39,12 +45,9 @@ import Header from '../components/Header.astro';
 </Layout>
 
 <style>
+	h1{
+		transform: scale(calc(var(--scroll, 0) * 200 + 1));
+	}
 	main {
-		margin: auto;
-		width: 800px;
-		max-width: calc(100% - 2rem);
-		color: #111;
-		font-size: 20px;
-		line-height: 1.6;
 	}
 </style>

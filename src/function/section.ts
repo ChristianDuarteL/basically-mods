@@ -4,16 +4,16 @@ export function checkIntersection (element: HTMLElement) {
     let options = {
         root: null,
         rootMargin: "0px",
-        threshold: .5,
+        threshold: .5
     };
 
     let observer = new IntersectionObserver((entries) => {
-        console.log(entries[0].boundingClientRect);
-        //console.log(entries[0].rootBounds);
-        if(entries[0].boundingClientRect){
+        if(entries[0].intersectionRatio >= .5){
+            console.log(entries)
             const { sectionName } = element.dataset;
             currentSection = sectionName;
             document.querySelector('[basically-suffix]').textContent = currentSection;
+            console.log('a')
         }
     }, options);
     observer.observe(element)
