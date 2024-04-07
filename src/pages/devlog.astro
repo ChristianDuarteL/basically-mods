@@ -1,0 +1,39 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Section from '../components/Section.astro';
+import Header from '../components/Header.astro';
+import Animatable from '../components/Animatable.astro';
+---
+
+<Layout title="Welcome to Astro.">
+	<Header
+		links={[
+			{
+				name: "Badges",
+				link: "/#badges"
+			},
+			{
+				name: "Arrows",
+				link: "/#arrows"
+			},
+			{
+				name: "Signs",
+				link: "/#signs"
+			},
+			{
+				name: "Devlog",
+				link: "/devlog"
+			}
+		]}
+	></Header>
+	<main>
+	</main>
+</Layout>
+
+<style>
+	h1{
+		transform: scale(calc(var(--scroll, 0) * 200 + 1));
+	}
+	main {
+	}
+</style>

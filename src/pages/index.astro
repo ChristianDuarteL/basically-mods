@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Section from '../components/Section.astro';
 import Header from '../components/Header.astro';
 import Animatable from '../components/Animatable.astro';
+import Arrows from '../sections/Arrows.astro';
 ---
 
 <Layout title="Welcome to Astro.">
@@ -10,35 +11,33 @@ import Animatable from '../components/Animatable.astro';
 		links={[
 			{
 				name: "Badges",
-				link: "#mods"
+				link: "#badges"
 			},
 			{
 				name: "Arrows",
-				link: "#mods"
+				link: "#arrows"
 			},
 			{
 				name: "Signs",
-				link: "#mods"
+				link: "#signs"
 			},
 			{
 				name: "Devlog",
-				link: "#mods"
+				link: "/devlog"
 			}
 		]}
 	></Header>
 	<main>
-		<Section name="Badges">
+		<Section name="Badges" section_id="badges">
 			<Animatable class='flex items-center justify-center min-h-full min-w-full bg-red-300 overflow-hidden'>
-				<div class="h-[200px] bg-black" slot="backdrop"></div>
+				<div class="h-[100vh] bg-[#fff1]" slot="backdrop"></div>
 				<h1>Badges</h1>
 			</Animatable>
 		</Section>
-		<Section name="Arrows">
-			<Animatable  class="flex items-center justify-center min-h-[200vh] min-w-full bg-blue-300">
-				<h1>Arrows</h1>
-			</Animatable>
+		<Section name="Arrows" section_id="arrows">
+			<Arrows></Arrows>
 		</Section>
-		<Section name="Signs">
+		<Section name="Signs" section_id="signs">
 			<div class="flex items-center justify-center min-h-full min-w-full bg-green-300"><h1>Signs</h1></div>
 		</Section>
 	</main>

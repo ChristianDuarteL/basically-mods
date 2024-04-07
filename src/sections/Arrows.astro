@@ -1,0 +1,30 @@
+---
+import Animatable from "../components/Animatable.astro";
+const arrows = [
+    {
+        link: "https://picsum.photos/170/50"
+    },
+    {
+        link: "https://picsum.photos/170/50"
+    },
+    {
+        link: "https://picsum.photos/170/50"
+    }
+]
+---
+
+<Animatable class="flex flex-col items-center justify-start min-h-[300vh] min-w-full bg-blue-300">
+    <div class="h-[50vh] bg-[#fff1]" slot="backdrop"></div>
+    <div class="sticky h-[100vh] w-full max-w-[calc(100%-9rem)] top-0 flex flex-col items-end justify-center gap-[15vh] overflow-visible">
+        {arrows.map((e, i) => <img class="relative opacity-[calc(1 )]" style={`--i: ${i}; --l: ${arrows.length}; --relative-i: ${i / (arrows.length - 1)}`} src={e.link} />)}
+    </div>
+    <h1>Arrows!</h1>
+</Animatable>
+
+
+<style>
+    img{
+        opacity: calc(var(--scroll) / .5);
+        right: calc(max(30vw - var(--scroll) * 30vw, 0vw));
+    }
+</style>

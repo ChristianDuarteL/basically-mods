@@ -15,7 +15,8 @@ interface Props {
         last_delta: string | undefined;
     }
 
-    const tracking: [HTMLElement, (HTMLElement & tracking_element)][] = [...document.querySelectorAll('[animatable-element]')].map(e => [e as HTMLElement, document.querySelector('[animatable-backdrop]').firstElementChild as (HTMLElement & tracking_element)]);
+    const tracking: [HTMLElement, (HTMLElement & tracking_element)][] = [...document.querySelectorAll('[animatable-element]')].map(e => [e as HTMLElement, e.querySelector('[animatable-backdrop]').firstElementChild as (HTMLElement & tracking_element)]);
+
     const updateScroll = () => tracking.forEach(element => {
         const b = element[1].getBoundingClientRect();
         const delta = Math.max(Math.min((window.screenY - b.top) / b.height, 1), 0).toFixed(4);
