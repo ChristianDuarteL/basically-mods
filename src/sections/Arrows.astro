@@ -33,8 +33,8 @@ const links: Link[] = [
     <div class="sticky h-[100vh] top-0 w-full max-w-[calc(100%-2rem)] flex flex-col items-end justify-center gap-[15vh] overflow-visible">
         {arrows.map((e, i) => <img class="relative w-[125px]" data-arrow={i} src={e.link} />)}
     </div>
-    <div class="w-[1080px] max-w-[calc(100%-9rem)] mx-auto mt-[-50vh] flex items-center justify-center min-h-screen z-10 gap-6" id="arrows">
-        <div class="flex-col flex-1 h-[100vh] flex justify-center">
+    <div class="w-[1080px] max-w-[calc(100%)] mx-auto mt-[-50vh] flex flex-col bg-white/20 md:flex-row items-center justify-center min-h-screen z-10 gap-6" id="arrows">
+        <div class="flex-col flex-1 h-[100vh] max-w-[calc(100%-9rem)] flex justify-center">
             <header class="flex flex-col flex-wrap items-start mb-2">
                 <h1 class="text-3xl">Basically arrows</h1>
                 <span class="bg-indigo-200 text-black/70 font-semibold py-1 px-2 rounded-full inline text-sm">MOD</span>
@@ -48,9 +48,9 @@ const links: Link[] = [
                 </a>)}
             </div>
         </div>
-        <div class="flex-1 flex flex-col items-center">
-            <div class="max-w-[480px] flex flex-col items-center">
-                <Carousel elements={ARROWS.map(e => ({name: e.name, url: `/arrows/entities/${e.slug}.png`, pagination_url: `/arrows/items/${e.slug}.png`}))} imgClasses="-rotate-45 arrow-shadow"></Carousel>
+        <div class="md:flex-1 flex flex-col items-center max-w-full">
+            <div class="flex flex-col items-center">
+                <Carousel class="w-[480px] aspect-square max-w-[100vw]" elements={ARROWS.map(e => ({name: e.name, url: `/arrows/entities/${e.slug}.png`, pagination_url: `/arrows/items/${e.slug}.png`}))} imgClasses="-rotate-45 arrow-shadow"></Carousel>
             </div>
         </div>
     </div>
@@ -63,8 +63,8 @@ const links: Link[] = [
             ease: 'none',
             scrollTrigger: {
                 trigger: e,
-                start: "center center",
-                end: "center 20%",
+                start: "center 60%",
+                end: "center 40%",
                 //toggleActions: 'restart pause reverse pause',
                 scrub: true, 
                 //markers: true
