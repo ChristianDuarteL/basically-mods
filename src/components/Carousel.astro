@@ -1,0 +1,153 @@
+---
+
+interface CarouselItem{
+  url: string;
+  name: string;
+  pagination_url?: string;
+}
+
+interface Props {
+  elements: CarouselItem[]
+  imgClasses?: string
+}
+
+const {elements, imgClasses} = Astro.props;
+
+---
+
+<div class="swiper mySwiper">
+  <div class="swiper-wrapper">
+      {elements.map(e => (<div class="swiper-slide" data-pagination-img={e.pagination_url ?? e.url}><img class={imgClasses} src={e.url} alt={e.name} /></div>))}
+  </div>
+  <div class="swiper-pagination">
+    {elements.map(e => (<span><img class="w-[60%] h-[60%] object-contain z-10 relative" src={e.pagination_url ?? e.url}/></span>))}
+  </div>
+</div>
+
+<style>
+    html,
+    body {
+      position: relative;
+      height: 100%;
+    }
+
+    body {
+      background: #eee;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #000;
+      margin: 0;
+      padding: 0;
+    }
+
+    .swiper {
+      width: 480px;
+      height: 480px;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .swiper-slide img {
+        display: block;
+        width: 50%;
+        height: 50%;
+        object-fit: contain;
+        image-rendering: pixelated;
+    }
+    
+</style>
+<style is:global>
+    .swiper-pagination-bullet {
+        width: 44px;
+        border-radius: 0;
+        height: 44px;
+        opacity: 1;
+        background-color: transparent;
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transform: none!important;
+    }
+    .swiper-pagination-bullet img{
+        image-rendering: pixelated;
+
+    }
+    .swiper-pagination-bullet::before{
+        position: absolute;
+        content: '';
+        width: 40px;
+        image-rendering: pixelated;
+        height: 40px;
+        background-size: cover;
+        background-image: url('/hotbar-not-active.png');
+        top: 2px;
+        left: 2px;
+        z-index: 1;
+    }
+    .swiper-pagination{
+        overflow: visible;
+    }
+    .swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet, .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet{
+        margin: -2px;
+    }
+    .swiper-pagination-bullet{
+        opacity: 0;
+    }
+
+    .swiper-pagination-bullet-active-next, .swiper-pagination-bullet-active-next-next,
+    .swiper-pagination-bullet-active-prev, .swiper-pagination-bullet-active-prev-prev {
+    }
+    .swiper-pagination-bullet-active-next, .swiper-pagination-bullet-active-prev {
+        opacity: .5;
+    }
+    .swiper-pagination-bullet-active-next-next, .swiper-pagination-bullet-active-prev-prev {
+        opacity: .25;
+    }
+    .swiper-pagination-bullet-active {
+        opacity: 1;
+    }
+    .swiper-pagination-bullet-active::after{
+        position: absolute;
+        content: '';
+        width: 44px;
+        image-rendering: pixelated;
+        height: 44px;
+        background-size: cover;
+        background-image: url('/hotbar-active.png');
+        top: 0;
+        left: 0;
+        z-index: 1;
+        --drop-shadow-color: #000a;
+        filter: drop-shadow(var(--drop-shadow-color) 2px 2px 3px);
+    }
+    .swiper-pagination-bullet-active-main{
+      opacity: 1;
+    }
+</style>
+<script>
+    import Swiper from 'swiper'
+    import { Pagination } from 'swiper/modules'
+    const swiper = new Swiper(".mySwiper", {
+      pagination: {
+        el: ".swiper-pagination",
+        dynamicBullets: true,
+        clickable: true,
+        dynamicMainBullets: 5,
+        renderBullet: function (index, className) {
+          console.log()
+          return `<span class="${className}"><img class="w-[60%] h-[60%] object-contain z-10 relative" src="${this.el.querySelectorAll('.swiper-slide')[index].dataset.paginationImg}"/></span>`;
+        },
+      },
+      modules: [
+        Pagination
+      ]
+    });
+</script>

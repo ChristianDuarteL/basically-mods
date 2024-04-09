@@ -1,30 +1,94 @@
 ---
-import Animatable from "../components/Animatable.astro";
-const arrows = [
+import Carousel from "../components/Carousel.astro";
+import { ARROWS } from "../data/arrows";
+import type { LinkType } from "../data/link_types";
+import { LINK_TYPES } from "../data/link_types";
+
+const arrows = ARROWS.map(e => ({
+    link: `/arrows/entities/${e.slug}.png`
+}));
+
+interface Link {
+    type: LinkType,
+    url: string
+}
+
+const links: Link[] = [
     {
-        link: "https://picsum.photos/170/50"
+        type: "curseforge",
+        url: "https://www.curseforge.com/minecraft/mc-mods/qfs-extra-resources"
     },
     {
-        link: "https://picsum.photos/170/50"
+        type: 'modthrint',
+        url: "https://modrinth.com/"
     },
     {
-        link: "https://picsum.photos/170/50"
+        type: 'github',
+        url: "https://github.com/ChristianDuarteL"
     }
 ]
 ---
 
-<Animatable class="flex flex-col items-center justify-start min-h-[300vh] min-w-full bg-blue-300">
-    <div class="h-[50vh] bg-[#fff1]" slot="backdrop"></div>
-    <div class="sticky h-[100vh] w-full max-w-[calc(100%-9rem)] top-0 flex flex-col items-end justify-center gap-[15vh] overflow-visible">
-        {arrows.map((e, i) => <img class="relative opacity-[calc(1 )]" style={`--i: ${i}; --l: ${arrows.length}; --relative-i: ${i / (arrows.length - 1)}`} src={e.link} />)}
+<div class="flex flex-col items-center justify-center min-h-[150vh] min-w-full">
+    <div class="sticky h-[100vh] top-0 w-full max-w-[calc(100%-2rem)] flex flex-col items-end justify-center gap-[15vh] overflow-visible">
+        {arrows.map((e, i) => <img class="relative w-[125px]" data-arrow={i} src={e.link} />)}
     </div>
-    <h1>Arrows!</h1>
-</Animatable>
+    <div class="w-[1080px] max-w-[calc(100%-9rem)] mx-auto mt-[-50vh] flex items-center justify-center min-h-screen z-10 gap-6" id="arrows">
+        <div class="flex-col flex-1 h-[100vh] flex justify-center">
+            <header class="flex flex-col flex-wrap items-start mb-2">
+                <h1 class="text-3xl">Basically arrows</h1>
+                <span class="bg-indigo-200 text-black/70 font-semibold py-1 px-2 rounded-full inline text-sm">MOD</span>
+            </header>
+            <p class="text-lg text-balance">From seeking arrows to pacify arrows, this mod adds a lot of new arrows for you to be the best archer of all Minecraft.</p>
+            <div class="mt-20 flex gap-3">
+                {links.map(link => <a href={link.url} target="_blank" class="text-4xl inline-block opacity-60 transform hover:opacity-100 hover:scale-125 motion-safe:transition motion-reduce:any-hover:scale-100]" style={{color: LINK_TYPES[link.type].color}}>
+                    <svg viewBox={LINK_TYPES[link.type].icon.viewbox} width="1em" height="1em">
+                        {LINK_TYPES[link.type].icon.paths.map(pathObj => <path fill="currentColor" clip-rule={pathObj.clipRule} fill-rule={pathObj.fillRule} d={pathObj.path}></path>)}
+                    </svg>
+                </a>)}
+            </div>
+        </div>
+        <div class="flex-1 flex flex-col items-center">
+            <div class="max-w-[480px] flex flex-col items-center">
+                <Carousel elements={ARROWS.map(e => ({name: e.name, url: `/arrows/entities/${e.slug}.png`, pagination_url: `/arrows/items/${e.slug}.png`}))} imgClasses="-rotate-45 arrow-shadow"></Carousel>
+            </div>
+        </div>
+    </div>
+</div>
 
+<script>
+    import { gsap } from "gsap";
+    document.querySelectorAll('[data-arrow]').forEach(e => {
+        gsap.to(e, {
+            ease: 'none',
+            scrollTrigger: {
+                trigger: e,
+                start: "center center",
+                end: "center 20%",
+                //toggleActions: 'restart pause reverse pause',
+                scrub: true, 
+                //markers: true
+            },
+            x: 400, 
+            opacity: 1,
+            duration: 3
+        })
+    })
+</script>
+
+<style is:global>
+    img.arrow-shadow{
+        --drop-shadow-color: #000a;
+        filter: drop-shadow(var(--drop-shadow-color) 2px 2px 3px);
+    }
+</style>
 
 <style>
     img{
-        opacity: calc(var(--scroll) / .5);
-        right: calc(max(30vw - var(--scroll) * 30vw, 0vw));
+        opacity: 0;
+        --drop-shadow-color: #000a;
+        filter: drop-shadow(var(--drop-shadow-color) 2px 2px 3px);
+        image-rendering: pixelated;
+        right: 400px;
     }
 </style>

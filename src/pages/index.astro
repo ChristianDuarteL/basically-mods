@@ -2,8 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import Section from '../components/Section.astro';
 import Header from '../components/Header.astro';
-import Animatable from '../components/Animatable.astro';
 import Arrows from '../sections/Arrows.astro';
+import Basically from '../sections/Basically.astro';
 ---
 
 <Layout title="Welcome to Astro.">
@@ -27,26 +27,21 @@ import Arrows from '../sections/Arrows.astro';
 			}
 		]}
 	></Header>
-	<main>
-		<Section name="Badges" section_id="badges">
-			<Animatable class='flex items-center justify-center min-h-full min-w-full bg-red-300 overflow-hidden'>
-				<div class="h-[100vh] bg-[#fff1]" slot="backdrop"></div>
-				<h1>Badges</h1>
-			</Animatable>
+	<main class="relative">
+		<Section class="min-w-full min-h-screen flex -z-1" name="" section_id="home">
+			<Basically></Basically>
 		</Section>
-		<Section name="Arrows" section_id="arrows">
+		<Section name="Badges" section_id="badges">
+			<div class="flex items-center justify-center min-h-full min-w-full"><h1>Badges</h1></div>
+		</Section>
+		<Section name="Arrows">
 			<Arrows></Arrows>
 		</Section>
 		<Section name="Signs" section_id="signs">
-			<div class="flex items-center justify-center min-h-full min-w-full bg-green-300"><h1>Signs</h1></div>
+			<div class="flex items-center justify-center min-h-full min-w-full"><h1>Signs</h1></div>
 		</Section>
 	</main>
 </Layout>
 
 <style>
-	h1{
-		transform: scale(calc(var(--scroll, 0) * 200 + 1));
-	}
-	main {
-	}
 </style>

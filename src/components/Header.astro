@@ -27,5 +27,8 @@ const { links } = Astro.props ;
 <style>
     nav{
         max-width: calc(100% - 2rem);
-    }    
+    }   
+    [basically-suffix]:not(:empty)::before{
+        content: ' ';
+    } 
 </style>

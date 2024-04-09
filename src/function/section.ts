@@ -9,11 +9,9 @@ export function checkIntersection (element: HTMLElement) {
 
     let observer = new IntersectionObserver((entries) => {
         if(entries[0].intersectionRatio >= .5){
-            console.log(entries)
             const { sectionName } = element.dataset;
             currentSection = sectionName;
             document.querySelector('[basically-suffix]').textContent = currentSection;
-            console.log('a')
         }
     }, options);
     observer.observe(element)
