@@ -9,16 +9,17 @@ interface CarouselItem{
 interface Props {
   elements: CarouselItem[]
   imgClasses?: string
+  slideClasses?: string;
   'class': string;
 }
 
-const {elements, imgClasses, 'class': _class} = Astro.props;
+const {elements, imgClasses, 'class': _class, slideClasses} = Astro.props;
 
 ---
 
 <div class={`swiper mySwiper ${_class}`}>
   <div class="swiper-wrapper">
-      {elements.map(e => (<div class="swiper-slide overflow-hidden" data-pagination-img={e.pagination_url ?? e.url}><img class={imgClasses} src={e.url} alt={e.name} /></div>))}
+      {elements.map(e => (<div class={`swiper-slide overflow-hidden ${slideClasses}`} data-pagination-img={e.pagination_url ?? e.url}><img class={imgClasses} src={e.url} alt={e.name} /></div>))}
   </div>
   <div class="swiper-pagination">
     {elements.map(e => (<span><img class="w-[60%] h-[60%] object-contain z-10 relative" src={e.pagination_url ?? e.url}/></span>))}
@@ -50,10 +51,14 @@ const {elements, imgClasses, 'class': _class} = Astro.props;
     
 </style>
 <style is:global>
+    .swiper-pagination{
+      height: 12%;
+    }
     .swiper-pagination-bullet {
-        width: 44px;
+        width: unset;
+        height: 90%;
         border-radius: 0;
-        height: 44px;
+        aspect-ratio: 1;
         opacity: 1;
         background-color: transparent;
         position: relative;
@@ -69,20 +74,24 @@ const {elements, imgClasses, 'class': _class} = Astro.props;
     .swiper-pagination-bullet::before{
         position: absolute;
         content: '';
-        width: 40px;
+        
+        width: 100%;
+        height: 100%;
+        
         image-rendering: pixelated;
-        height: 40px;
         background-size: cover;
         background-image: url('/hotbar-not-active.png');
-        top: 2px;
-        left: 2px;
+        margin: 0;
         z-index: 1;
     }
     .swiper-pagination{
         overflow: visible;
     }
+    .swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet img, .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet img{
+        margin: 0;
+    }
     .swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet, .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet{
-        margin: -2px;
+        margin: 0;
     }
     .swiper-pagination-bullet{
         opacity: 0;
@@ -103,13 +112,12 @@ const {elements, imgClasses, 'class': _class} = Astro.props;
     .swiper-pagination-bullet-active::after{
         position: absolute;
         content: '';
-        width: 44px;
+        
+        width: 110%;
+        height: 110%;
         image-rendering: pixelated;
-        height: 44px;
         background-size: cover;
         background-image: url('/hotbar-active.png');
-        top: 0;
-        left: 0;
         z-index: 1;
         --drop-shadow-color: #000a;
         filter: drop-shadow(var(--drop-shadow-color) 2px 2px 3px);
