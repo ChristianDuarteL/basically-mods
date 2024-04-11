@@ -1,46 +1,50 @@
 ---
 
 interface CarouselItem{
-  url: string;
-  name: string;
-  pagination_url?: string;
+    url: string;
+    name: string;
+    pagination_url?: string;
 }
 
 interface Props {
-  elements: CarouselItem[]
-  imgClasses?: string
-  slideClasses?: string;
-  'class': string;
+    elements: CarouselItem[]
+    imgClasses?: string
+    slideClasses?: string;
+    'class': string;
+    id: string;
+    wrapperClasses: string;
 }
 
-const {elements, imgClasses, 'class': _class, slideClasses} = Astro.props;
+const {elements, imgClasses, 'class': _class, slideClasses, id, wrapperClasses} = Astro.props;
 
 ---
 
-<div class={`swiper mySwiper ${_class}`}>
-  <div class="swiper-wrapper">
-      {elements.map(e => (<div class={`swiper-slide overflow-hidden ${slideClasses}`} data-pagination-img={e.pagination_url ?? e.url}><img class={imgClasses} src={e.url} alt={e.name} /></div>))}
-  </div>
-  <div class="swiper-pagination">
-    {elements.map(e => (<span><img class="w-[60%] h-[60%] object-contain z-10 relative" src={e.pagination_url ?? e.url}/></span>))}
-  </div>
+<div class={`swiper ${_class}`} data-swiper id={id}>
+    <div class={`swiper-wrapper ${wrapperClasses}`}>
+        {elements.map(e => (<div class={`swiper-slide ${slideClasses}`} data-pagination-img={e.pagination_url ?? e.url}><img class={imgClasses} src={e.url} alt={e.name} /></div>))}
+    </div>
+    <div class={`${slideClasses} swiper-slide w-full`}></div>
+    <div class="swiper-pagination">
+        {elements.map(e => (<span><img class="w-[60%] h-[60%] object-contain z-10 relative" src={e.pagination_url ?? e.url}/></span>))}
+    </div>
 </div>
 
 <style>
     html,
     body {
-      position: relative;
-      height: 100%;
+        position: relative;
+        height: 100%;
     }
+
 
     .swiper-slide {
-      text-align: center;
-      font-size: 18px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+        text-align: center;
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
-
+    
     .swiper-slide img {
         display: block;
         width: 50%;
@@ -52,7 +56,7 @@ const {elements, imgClasses, 'class': _class, slideClasses} = Astro.props;
 </style>
 <style is:global>
     .swiper-pagination{
-      height: 12%;
+        height: 12%;
     }
     .swiper-pagination-bullet {
         width: unset;
@@ -69,7 +73,7 @@ const {elements, imgClasses, 'class': _class, slideClasses} = Astro.props;
     }
     .swiper-pagination-bullet img{
         image-rendering: pixelated;
-
+        
     }
     .swiper-pagination-bullet::before{
         position: absolute;
@@ -96,7 +100,7 @@ const {elements, imgClasses, 'class': _class, slideClasses} = Astro.props;
     .swiper-pagination-bullet{
         opacity: 0;
     }
-
+    
     .swiper-pagination-bullet-active-next, .swiper-pagination-bullet-active-next-next,
     .swiper-pagination-bullet-active-prev, .swiper-pagination-bullet-active-prev-prev {
     }
@@ -123,25 +127,35 @@ const {elements, imgClasses, 'class': _class, slideClasses} = Astro.props;
         filter: drop-shadow(var(--drop-shadow-color) 2px 2px 3px);
     }
     .swiper-pagination-bullet-active-main{
-      opacity: 1;
+        opacity: 1;
     }
 </style>
 <script>
     import Swiper from 'swiper'
     import { Pagination } from 'swiper/modules'
-    const swiper = new Swiper(".mySwiper", {
-      pagination: {
-        el: ".swiper-pagination",
-        dynamicBullets: true,
-        clickable: true,
-        dynamicMainBullets: 5,
-        renderBullet: function (index, className) {
-          console.log()
-          return `<span class="${className}"><img class="w-[60%] h-[60%] object-contain z-10 relative" src="${this.el.querySelectorAll('.swiper-slide')[index].dataset.paginationImg}"/></span>`;
-        },
-      },
-      modules: [
-        Pagination
-      ]
-    });
+    import { setSwiper } from '../function/swiper';
+    declare module global {
+        interface Window {
+            swiper?: Swiper;
+        }
+    }
+
+    document.querySelectorAll('[data-swiper]').forEach(e => {
+        if(!(e instanceof HTMLElement))  return;
+        setSwiper(e, new Swiper(e, {
+            pagination: {
+                el: ".swiper-pagination",
+                dynamicBullets: true,
+                clickable: true,
+                dynamicMainBullets: 5,
+                renderBullet: function (index, className) {
+                    console.log()
+                    return `<span class="${className}"><img class="w-[60%] h-[60%] object-contain z-10 relative" src="${this.el.querySelectorAll('.swiper-slide')[index].dataset.paginationImg}"/></span>`;
+                },
+            },
+            modules: [
+                Pagination
+            ]
+        }));
+    })
 </script>

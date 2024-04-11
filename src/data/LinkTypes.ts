@@ -15,6 +15,11 @@ interface LinkTypeObj {
     color: string
 }
 
+export interface Link {
+    type: LinkType,
+    url: string
+}
+
 const LINK_TYPES_INTERNAL: {[key in LinkType]: LinkTypeObj} = {
     curseforge: {
         website_name: 'CurseForge',
