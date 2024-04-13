@@ -1,15 +1,4 @@
 ---
-const arrows = [
-    {
-        link: "https://picsum.photos/170/50"
-    },
-    {
-        link: "https://picsum.photos/170/50"
-    },
-    {
-        link: "https://picsum.photos/170/50"
-    }
-]
 ---
 
 <div class="flex flex-col items-center justify-center h-[100vh] w-full overflow-hidden" home-texts>
@@ -21,18 +10,23 @@ const arrows = [
 
 <script>
     import { gsap } from "gsap";
+    import { setSection } from '../function/section';
     const element = document.querySelector('[home-texts]');
     gsap.to(element, {
         ease: 'none',
         scrollTrigger: {
             trigger: element,
-            start: "center center",
-            end: "100% 0",
+            start: "50% 50%",
+            end: "100% 50%",
             //markers: true,
             //toggleActions: 'restart pause reverse pause',
-            scrub: 1
+            onEnter: () => setSection(""),
+            //onLeave: () => setSection(""),
+            onEnterBack: () => setSection(""),
+            //onLeaveBack: () => console.log('leaveBack'),
+            scrub: true
         },
-        y: '-70vh', 
+        opacity: 0,
         duration: 3
     })
 </script>

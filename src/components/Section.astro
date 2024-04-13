@@ -3,14 +3,15 @@ interface Props {
     name: string;
     section_id?: string;
     'class'?: string;
+    addIntersection?: boolean;
 }
 
-const { name, section_id, 'class': _class } = Astro.props;
+const { name, section_id, 'class': _class, addIntersection } = Astro.props;
 ---
 
 <section class={`min-w-full min-h-screen flex relative -z-1 ${_class}`} id={section_id}>
     <div class="absolute w-full h-full">
-        <div class="sticky top-0 h-screen min-w-full" data-section-name={name}></div>
+        <div class="sticky top-0 h-screen min-w-full" data-section-name={name} data-add-intersection={addIntersection === false ? 'false' : ''}></div>
     </div>
     <slot />
 </section>
@@ -19,8 +20,9 @@ const { name, section_id, 'class': _class } = Astro.props;
 
 <script>
     import { checkIntersection } from "../function/section";
-    const elements = document.querySelectorAll(`[data-section-name]`);
+    const elements = document.querySelectorAll(`[data-section-name]:not([data-add-intersection=false])`);
     elements && elements.forEach(element => {
         element instanceof HTMLElement && checkIntersection(element);
     });
+    console.log(elements)
 </script>
