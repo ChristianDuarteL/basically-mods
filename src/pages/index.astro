@@ -18,29 +18,29 @@ import Signs from '../sections/Signs.astro';
 				name: "Arrows",
 				link: "#arrows"
 			},
-			{
+			/*{
 				name: "Badges",
 				link: "#badges"
 			},
 			{
 				name: "Devlog",
 				link: "/devlog"
-			}
+			}*/
 		]}
 	></Header>
 	<main class="relative w-full -z-10">
-		<Section class="min-w-full min-h-[150vh] flex -z-1 sticky top-0" name="" section_id="home" addIntersection={false}>
+		<Section class="min-w-full min-h-[130vh] flex -z-1 sticky top-0" name="" section_id="home" addIntersection={false}>
 			<Basically></Basically>
 		</Section>
-		<Section name="Signs" section_id="signs">
+		<Section name="Signs">
 			<Signs></Signs>
 		</Section>
 		<Section name="Arrows">
 			<Arrows></Arrows>
 		</Section>
-		<Section name="Badges" section_id="badges">
+		<!--<Section name="Badges" section_id="badges">
 			<div class="flex items-center justify-center min-h-full min-w-full"><h1>Badges</h1></div>
-		</Section>
+		</Section> -->
 	</main>
 </Layout>
 

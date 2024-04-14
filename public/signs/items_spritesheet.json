@@ -1,0 +1,751 @@
+{
+	"frames": {
+		"amber_sign": {
+			"frame": {
+				"x": 1,
+				"y": 1,
+				"w": 16,
+				"h": 16
+			},
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 16,
+				"h": 16
+			},
+			"sourceSize": {
+				"w": 16,
+				"h": 16
+			}
+		},
+		"apricot_sign": {
+			"frame": {
+				"x": 19,
+				"y": 1,
+				"w": 16,
+				"h": 16
+			},
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 16,
+				"h": 16
+			},
+			"sourceSize": {
+				"w": 16,
+				"h": 16
+			}
+		},
+		"aqua_sign": {
+			"frame": {
+				"x": 37,
+				"y": 1,
+				"w": 16,
+				"h": 16
+			},
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 16,
+				"h": 16
+			},
+			"sourceSize": {
+				"w": 16,
+				"h": 16
+			}
+		},
+		"blueberries_sign": {
+			"frame": {
+				"x": 55,
+				"y": 1,
+				"w": 16,
+				"h": 16
+			},
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 16,
+				"h": 16
+			},
+			"sourceSize": {
+				"w": 16,
+				"h": 16
+			}
+		},
+		"bubblegum_sign": {
+			"frame": {
+				"x": 73,
+				"y": 1,
+				"w": 16,
+				"h": 16
+			},
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 16,
+				"h": 16
+			},
+			"sourceSize": {
+				"w": 16,
+				"h": 16
+			}
+		},
+		"cherries_sign": {
+			"frame": {
+				"x": 91,
+				"y": 1,
+				"w": 16,
+				"h": 16
+			},
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 16,
+				"h": 16
+			},
+			"sourceSize": {
+				"w": 16,
+				"h": 16
+			}
+		},
+		"citrine_sign": {
+			"frame": {
+				"x": 1,
+				"y": 19,
+				"w": 16,
+				"h": 16
+			},
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 16,
+				"h": 16
+			},
+			"sourceSize": {
+				"w": 16,
+				"h": 16
+			}
+		},
+		"citrus_sign": {
+			"frame": {
+				"x": 19,
+				"y": 19,
+				"w": 16,
+				"h": 16
+			},
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 16,
+				"h": 16
+			},
+			"sourceSize": {
+				"w": 16,
+				"h": 16
+			}
+		},
+		"clouds_sign": {
+			"frame": {
+				"x": 37,
+				"y": 19,
+				"w": 16,
+				"h": 16
+			},
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 16,
+				"h": 16
+			},
+			"sourceSize": {
+				"w": 16,
+				"h": 16
+			}
+		},
+		"coral_sign": {
+			"frame": {
+				"x": 55,
+				"y": 19,
+				"w": 16,
+				"h": 16
+			},
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 16,
+				"h": 16
+			},
+			"sourceSize": {
+				"w": 16,
+				"h": 16
+			}
+		},
+		"cotton_candy_sign": {
+			"frame": {
+				"x": 73,
+				"y": 19,
+				"w": 16,
+				"h": 16
+			},
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 16,
+				"h": 16
+			},
+			"sourceSize": {
+				"w": 16,
+				"h": 16
+			}
+		},
+		"cream_sign": {
+			"frame": {
+				"x": 91,
+				"y": 19,
+				"w": 16,
+				"h": 16
+			},
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 16,
+				"h": 16
+			},
+			"sourceSize": {
+				"w": 16,
+				"h": 16
+			}
+		},
+		"crimson_sign": {
+			"frame": {
+				"x": 1,
+				"y": 37,
+				"w": 16,
+				"h": 16
+			},
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 16,
+				"h": 16
+			},
+			"sourceSize": {
+				"w": 16,
+				"h": 16
+			}
+		},
+		"cucurucho_sign": {
+			"frame": {
+				"x": 19,
+				"y": 37,
+				"w": 16,
+				"h": 16
+			},
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 16,
+				"h": 16
+			},
+			"sourceSize": {
+				"w": 16,
+				"h": 16
+			}
+		},
+		"emerald_sign": {
+			"frame": {
+				"x": 37,
+				"y": 37,
+				"w": 16,
+				"h": 16
+			},
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 16,
+				"h": 16
+			},
+			"sourceSize": {
+				"w": 16,
+				"h": 16
+			}
+		},
+		"enaira_sign": {
+			"frame": {
+				"x": 55,
+				"y": 37,
+				"w": 16,
+				"h": 16
+			},
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 16,
+				"h": 16
+			},
+			"sourceSize": {
+				"w": 16,
+				"h": 16
+			}
+		},
+		"gooseberries_sign": {
+			"frame": {
+				"x": 73,
+				"y": 37,
+				"w": 16,
+				"h": 16
+			},
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 16,
+				"h": 16
+			},
+			"sourceSize": {
+				"w": 16,
+				"h": 16
+			}
+		},
+		"green_blossom_sign": {
+			"frame": {
+				"x": 91,
+				"y": 37,
+				"w": 16,
+				"h": 16
+			},
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 16,
+				"h": 16
+			},
+			"sourceSize": {
+				"w": 16,
+				"h": 16
+			}
+		},
+		"ice_blue_sign": {
+			"frame": {
+				"x": 1,
+				"y": 55,
+				"w": 16,
+				"h": 16
+			},
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 16,
+				"h": 16
+			},
+			"sourceSize": {
+				"w": 16,
+				"h": 16
+			}
+		},
+		"kiwi_target_sign": {
+			"frame": {
+				"x": 19,
+				"y": 55,
+				"w": 16,
+				"h": 16
+			},
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 16,
+				"h": 16
+			},
+			"sourceSize": {
+				"w": 16,
+				"h": 16
+			}
+		},
+		"lavender_target_sign": {
+			"frame": {
+				"x": 37,
+				"y": 55,
+				"w": 16,
+				"h": 16
+			},
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 16,
+				"h": 16
+			},
+			"sourceSize": {
+				"w": 16,
+				"h": 16
+			}
+		},
+		"magenta_blossom_sign": {
+			"frame": {
+				"x": 55,
+				"y": 55,
+				"w": 16,
+				"h": 16
+			},
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 16,
+				"h": 16
+			},
+			"sourceSize": {
+				"w": 16,
+				"h": 16
+			}
+		},
+		"mermaid_sign": {
+			"frame": {
+				"x": 73,
+				"y": 55,
+				"w": 16,
+				"h": 16
+			},
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 16,
+				"h": 16
+			},
+			"sourceSize": {
+				"w": 16,
+				"h": 16
+			}
+		},
+		"mint_green_sign": {
+			"frame": {
+				"x": 91,
+				"y": 55,
+				"w": 16,
+				"h": 16
+			},
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 16,
+				"h": 16
+			},
+			"sourceSize": {
+				"w": 16,
+				"h": 16
+			}
+		},
+		"nyx_sign": {
+			"frame": {
+				"x": 1,
+				"y": 73,
+				"w": 16,
+				"h": 16
+			},
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 16,
+				"h": 16
+			},
+			"sourceSize": {
+				"w": 16,
+				"h": 16
+			}
+		},
+		"oceanic_sign": {
+			"frame": {
+				"x": 19,
+				"y": 73,
+				"w": 16,
+				"h": 16
+			},
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 16,
+				"h": 16
+			},
+			"sourceSize": {
+				"w": 16,
+				"h": 16
+			}
+		},
+		"oceki_sign": {
+			"frame": {
+				"x": 37,
+				"y": 73,
+				"w": 16,
+				"h": 16
+			},
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 16,
+				"h": 16
+			},
+			"sourceSize": {
+				"w": 16,
+				"h": 16
+			}
+		},
+		"periwinkle_sign": {
+			"frame": {
+				"x": 55,
+				"y": 73,
+				"w": 16,
+				"h": 16
+			},
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 16,
+				"h": 16
+			},
+			"sourceSize": {
+				"w": 16,
+				"h": 16
+			}
+		},
+		"rose_sign": {
+			"frame": {
+				"x": 73,
+				"y": 73,
+				"w": 16,
+				"h": 16
+			},
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 16,
+				"h": 16
+			},
+			"sourceSize": {
+				"w": 16,
+				"h": 16
+			}
+		},
+		"royal_blossom_sign": {
+			"frame": {
+				"x": 91,
+				"y": 73,
+				"w": 16,
+				"h": 16
+			},
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 16,
+				"h": 16
+			},
+			"sourceSize": {
+				"w": 16,
+				"h": 16
+			}
+		},
+		"royal_blue_sign": {
+			"frame": {
+				"x": 1,
+				"y": 91,
+				"w": 16,
+				"h": 16
+			},
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 16,
+				"h": 16
+			},
+			"sourceSize": {
+				"w": 16,
+				"h": 16
+			}
+		},
+		"scarlet_sign": {
+			"frame": {
+				"x": 19,
+				"y": 91,
+				"w": 16,
+				"h": 16
+			},
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 16,
+				"h": 16
+			},
+			"sourceSize": {
+				"w": 16,
+				"h": 16
+			}
+		},
+		"seagreen_sign": {
+			"frame": {
+				"x": 37,
+				"y": 91,
+				"w": 16,
+				"h": 16
+			},
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 16,
+				"h": 16
+			},
+			"sourceSize": {
+				"w": 16,
+				"h": 16
+			}
+		},
+		"sienna_sign": {
+			"frame": {
+				"x": 55,
+				"y": 91,
+				"w": 16,
+				"h": 16
+			},
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 16,
+				"h": 16
+			},
+			"sourceSize": {
+				"w": 16,
+				"h": 16
+			}
+		},
+		"slate_blue_sign": {
+			"frame": {
+				"x": 73,
+				"y": 91,
+				"w": 16,
+				"h": 16
+			},
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 16,
+				"h": 16
+			},
+			"sourceSize": {
+				"w": 16,
+				"h": 16
+			}
+		},
+		"spooky_green_sign": {
+			"frame": {
+				"x": 91,
+				"y": 91,
+				"w": 16,
+				"h": 16
+			},
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 16,
+				"h": 16
+			},
+			"sourceSize": {
+				"w": 16,
+				"h": 16
+			}
+		},
+		"sunset_sign": {
+			"frame": {
+				"x": 109,
+				"y": 1,
+				"w": 16,
+				"h": 16
+			},
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 16,
+				"h": 16
+			},
+			"sourceSize": {
+				"w": 16,
+				"h": 16
+			}
+		},
+		"tangerine_target_sign": {
+			"frame": {
+				"x": 109,
+				"y": 19,
+				"w": 16,
+				"h": 16
+			},
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 16,
+				"h": 16
+			},
+			"sourceSize": {
+				"w": 16,
+				"h": 16
+			}
+		},
+		"tom_sign": {
+			"frame": {
+				"x": 109,
+				"y": 37,
+				"w": 16,
+				"h": 16
+			},
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 16,
+				"h": 16
+			},
+			"sourceSize": {
+				"w": 16,
+				"h": 16
+			}
+		},
+		"walt_sign": {
+			"frame": {
+				"x": 109,
+				"y": 55,
+				"w": 16,
+				"h": 16
+			},
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 16,
+				"h": 16
+			},
+			"sourceSize": {
+				"w": 16,
+				"h": 16
+			}
+		},
+		"yellow_blossom_sign": {
+			"frame": {
+				"x": 109,
+				"y": 73,
+				"w": 16,
+				"h": 16
+			},
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 16,
+				"h": 16
+			},
+			"sourceSize": {
+				"w": 16,
+				"h": 16
+			}
+		}
+	},
+	"meta": {
+		"version": "1.0",
+		"format": "RGBA8888",
+		"size": {
+			"w": 126,
+			"h": 108
+		},
+		"scale": "1"
+	}
+}

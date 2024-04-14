@@ -1,24 +1,4 @@
-interface Path {
-    path: string,
-    clipRule?: string,
-    fillRule?: 'nonzero' | 'evenodd' | 'inherit' | undefined | null;
-}
-
-interface Icon {
-    viewbox: string,
-    paths: Path[]
-}
-
-interface LinkTypeObj {
-    icon?: Icon,
-    website_name: string,
-    color: string
-}
-
-export interface Link {
-    type: LinkType,
-    url: string
-}
+import type { LinkType, LinkTypeObj } from "../types/Links";
 
 const LINK_TYPES_INTERNAL: {[key in LinkType]: LinkTypeObj} = {
     curseforge: {
@@ -65,7 +45,5 @@ const LINK_TYPES_INTERNAL: {[key in LinkType]: LinkTypeObj} = {
         color: '#1c2128'
     }
 }
-
-export type LinkType = 'curseforge' | 'modthrint' | 'github';
 
 export const LINK_TYPES: {[key in keyof typeof LINK_TYPES_INTERNAL]: LinkTypeObj} = LINK_TYPES_INTERNAL;

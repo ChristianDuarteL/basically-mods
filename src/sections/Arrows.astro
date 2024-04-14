@@ -1,28 +1,13 @@
 ---
 import Carousel from "../components/Carousel.astro";
 import ModData from "../components/ModData.astro";
-import { ARROWS } from "../data/arrows";
-import { BADGE_TYPES } from "../data/BadgeTypes";
-import type { Link } from "../data/LinkTypes";
+import { ARROWS } from "../consts/arrows";
+import { MODS } from "../consts/mods";
 
 const arrows = ARROWS.map(e => ({
     link: `/arrows/entities/${e.slug}.png`
 }));
 
-const links: Link[] = [
-    {
-        type: "curseforge",
-        url: ""
-    },
-    {
-        type: 'modthrint',
-        url: ""
-    },
-    {
-        type: 'github',
-        url: ""
-    }
-]
 ---
 
 <div class="flex flex-col items-center  justify-center min-h-[150vh] min-w-full">
@@ -31,13 +16,15 @@ const links: Link[] = [
     </div>
     <div class="w-full mt-[-50vh] flex bg-white/20 sm:bg-white/40 lg:bg-transparent backdrop-blur-sm md:backdrop-blur-none items-start sm:items-center justify-center min-h-screen z-10 gap-6" id="arrows">
         <div class="flex w-[980px] max-w-[calc(100%-4rem)] flex-col sm:flex-row">
-            <ModData links={links} badges={['MOD', 'CLIENT_AND_SERVER']} abstract="From seeking arrows to pacify arrows, this mod adds a lot of new arrows for you to be the best archer of all Minecraft." modName="Basically Arrows"></ModData>
+            <ModData mod={MODS.arrows}></ModData>
             <div class="md:flex-1 flex flex-col items-center max-w-full sm:min-h-[80vh] justify-start md:justify-center">
                 <div class="flex flex-col items-center w-full gap-5 overflow-hidden">
                     <Carousel id="arrowsCarousel" wrapperClasses="overflow-visible" class="w-64 sm:w-72 sm:mt-10 md:mt-0 md:w-96 aspect-square overflow-visible" elements={ARROWS.map(e => ({name: e.name, url: `/arrows/entities/${e.slug}.png`, pagination_url: `/arrows/items/${e.slug}.png`}))} imgClasses="-rotate-45 arrow-shadow max-w-[min(380px,100%)]"></Carousel>
                     <div class="sm:max-w-[min(24rem,40vw)] max-w-96 flex text-center items-center flex-col gap-2 md:min-h-80">
                         <h1 arrow-name class="text-2xl">{ARROWS[0].name}</h1>
-                        <p arrow-desc class="text-balance">{ARROWS[0].description}</p>
+                        <div arrow-desc class="flex flex-col gap-2">
+                            {!ARROWS[0].description ? undefined : (typeof ARROWS[0].description == "string" ? [ARROWS[0].description] : ARROWS[0].description).map(e => <p class="text-balance">{e}</p>)}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -48,7 +35,7 @@ const links: Link[] = [
 <script>
     import { gsap } from "gsap";
     import { getSwiper } from "../function/swiper";
-    import { ARROWS } from "../data/arrows";
+    import { ARROWS } from "../consts/arrows";
     document.querySelectorAll('[data-arrow]').forEach(e => {
         gsap.to(e, {
             ease: 'none',
@@ -68,7 +55,18 @@ const links: Link[] = [
     const reloadArrowsText = (index: number) => {
         const arrow = ARROWS[index];
         document.querySelectorAll('[arrow-name]').forEach(e => (e as HTMLElement).innerText = arrow.name)
-        document.querySelectorAll('[arrow-desc]').forEach(e => (e as HTMLElement).innerText = (arrow.description ?? ''))
+        document.querySelectorAll('[arrow-desc]').forEach(e => {
+            let arr = arrow.description ? (typeof(arrow.description) === 'string' ? [arrow.description] : arrow.description) : [];
+            const children = [...(e as HTMLElement).children];
+            children.forEach(e => e.remove());
+            arr.forEach(d => {
+                const p = document.createElement('p');
+                p.classList.add('text-balance');
+                p.appendChild(document.createTextNode(d));
+                (e as HTMLElement).appendChild(p)
+            })
+
+        })
     }
 
     window.addEventListener('load', () => {

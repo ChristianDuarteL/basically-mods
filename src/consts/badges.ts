@@ -1,14 +1,4 @@
-interface BadgeTypeObj {
-    classes: string
-    text: string
-}
-
-interface BadgeTypeMap{
-    MOD: BadgeTypeObj;
-    CLIENT: BadgeTypeObj;
-    SERVER: BadgeTypeObj;
-    CLIENT_AND_SERVER: BadgeTypeObj;
-}
+import type { BadgeTypeMap } from "../types/BadgeTypes";
 
 export const BADGE_TYPES: BadgeTypeMap = {
     MOD: {
