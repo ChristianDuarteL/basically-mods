@@ -5,13 +5,14 @@ import type { Mod } from "../types/Mod";
 
 interface Props {
     mod: Mod;
+    "class"?: string;
 }
 
-const { mod } = Astro.props;
+const { mod, "class": _class } = Astro.props;
 const {links, modName, abstract, badges} = mod
 ---
 
-<div class="flex-col flex-1 flex justify-center">
+<div class={`flex-col flex justify-center ${_class}`}>
     <header class="flex flex-col flex-wrap items-start mb-2 gap-2">
         <h1 class="text-3xl">{modName}</h1>
         <div class="flex gap-2">

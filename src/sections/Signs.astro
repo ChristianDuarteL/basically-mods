@@ -6,19 +6,19 @@ import { SIGNS } from "../consts/signs";
 ---
 
 
-<div class="flex flex-col items-center relative justify-center min-h-[150vh] min-w-full">
+<div class="flex flex-col items-center relative justify-center min-h-[100vh] md:min-h-[150vh] min-w-full">
     <div class="absolute w-full h-full">
-        <div class="absolute h-[10vh] bottom-6 w-full flex flex-col items-end justify-center gap-[15vh] overflow-visible">
-            <div class="aspect-[738/18] w-[100%] overflow-hidden">
-                <div class="signs-spritesheet w-[100%] translate-x-full"></div>
+        <div class="absolute bottom-6 w-full flex flex-col items-end justify-center gap-[15vh] overflow-visible">
+            <div class="w-[100%] overflow-hidden">
+                <div class="signs-spritesheet aspect-[750/18] w-[100%] translate-x-full hidden md:block"></div>
             </div>
         </div>
     </div>
     <div class="-z-10 absolute w-full h-full before:w-full before:h-full before:absolute before:bg-white/25 transition-colors opacity-0" signs-panel-bg></div>
-    <div class="w-full flex bg-white/20 sm:bg-white/40 lg:bg-transparent backdrop-blur-sm md:backdrop-blur-none items-start sm:items-center justify-center min-h-screen z-10 gap-6" id="signs">
+    <div class="w-full flex sm:items-center justify-center min-h-screen z-10 gap-6" id="signs">
         <div class="flex w-[980px] max-w-[calc(100%-4rem)] flex-col sm:flex-row">
-            <ModData mod={MODS.signs}></ModData>
-            <div class="md:flex-1 flex flex-col items-center max-w-full sm:min-h-[80vh] justify-start md:justify-center">
+            <ModData mod={MODS.signs} class="flex-1"></ModData>
+            <div class="flex-1 flex flex-col items-center max-w-full sm:min-h-[80vh] justify-start md:justify-center">
                 <div class="flex flex-col items-center w-full gap-5 overflow-hidden">
                     <Carousel id="signsCarousel" slideClasses="signSlide" wrapperClasses="overflow-visible" class="w-64 sm:w-72 sm:mt-10 md:mt-0 md:w-96 aspect-square overflow-visible" elements={SIGNS.map(e => ({name: e.name, url: e.entity, pagination_url: e.item}))} imgClasses="arrow-shadow max-w-[min(380px,100%)]"></Carousel>
                     <div class="sm:max-w-[min(24rem,40vw)] max-w-96 flex text-center items-center flex-col gap-2 md:min-h-32">
@@ -103,6 +103,5 @@ import { SIGNS } from "../consts/signs";
         background-image: url('/signs/items_spritesheet_inline.png');
         background-size: cover;
         image-rendering: pixelated;
-        aspect-ratio: 738/18;
     }
 </style>
