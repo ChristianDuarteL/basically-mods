@@ -19,6 +19,7 @@ const {elements, imgClasses, 'class': _class, slideClasses, id, wrapperClasses} 
 
 ---
 
+
 <div class={`swiper ${_class}`} data-swiper id={id}>
     <div class={`swiper-wrapper ${wrapperClasses}`}>
         {elements.map(e => (<div class={`swiper-slide ${slideClasses}`} carousel-slide data-pagination-img={e.pagination_url ?? e.url}><img class={imgClasses} src={e.url} alt={e.name} /></div>))}
