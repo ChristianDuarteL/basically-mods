@@ -25,12 +25,71 @@ const {elements, imgClasses, 'class': _class, slideClasses, id, wrapperClasses} 
         {elements.map(e => (<div class={`swiper-slide ${slideClasses}`} carousel-slide data-pagination-img={e.pagination_url ?? e.url}><img class={imgClasses} src={e.url} alt={e.name} /></div>))}
     </div>
     <div class={`${slideClasses} swiper-slide w-full`}></div>
-    <div class="swiper-pagination">
-        {elements.map(e => (<span class="select-none"><img class="w-[60%] h-[60%] object-contain z-10 relative" src={e.pagination_url ?? e.url}/></span>))}
+    <div class="pagination-wrapper">
+        <div class="swiper-pagination" carousel-pagination>
+            {elements.map(e => (<span class="select-none"><img class="w-[60%] h-[60%] object-contain z-10 relative" src={e.pagination_url ?? e.url}/></span>))}
+        </div>
+        <div class="show-full-pagination-wrapper swiper-pagination swiper-pagination-bullets swiper-pagination-horizontal">
+            <span class="select-none swiper-pagination-bullet show-full-pagination cursor-pointer text-xl" show-all-signs><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512"><path d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"/></svg></span>
+        </div>
     </div>
 </div>
 
 <style>
+    .pagination-wrapper.active{
+        width: 100%;
+    }
+    .pagination-wrapper.active .swiper-pagination {
+        transition: none;
+        position: static;
+        width: 100%!important;
+        height: 45px;
+        transform: none;
+        display: flex;
+        flex-wrap: wrap
+    }
+    .show-full-pagination-wrapper{
+        width: auto;
+        display: flex;
+        aspect-ratio: 1;
+        margin-bottom: 10%;
+        right: 0;
+        left:unset;
+        right: 50%;
+        transform: translateX(50%);
+    }
+    .pagination-wrapper.active .show-full-pagination-wrapper{
+        display: none;
+    }
+    .show-full-pagination{
+        display: flex!important; 
+        opacity: 1; 
+    }
+    .show-full-pagination::before, .show-full-pagination::after{
+        display: none;
+    }
+
+    .pagination-wrapper.active{
+        position: absolute;
+        text-align: center;
+        z-index: 10;
+        top: 0;
+        bottom: auto;
+        height: 100%;
+        background-color: #0002;
+        backdrop-filter: blur(10px);
+        padding: 1rem;
+        overflow-y: auto;
+    }
+    .pagination-wrapper.active .swiper-pagination :global(.swiper-pagination-bullet) {
+        left: 0!important;
+        transition: none;
+    }
+    .pagination-wrapper.active .swiper-pagination :global(.swiper-pagination-bullet) {
+        opacity: 1!important;
+        transition: none;
+    }
+
     html,
     body {
         position: relative;
@@ -60,7 +119,7 @@ const {elements, imgClasses, 'class': _class, slideClasses, id, wrapperClasses} 
         height: 12%;
     }
     .swiper-pagination-bullet {
-        width: unset;
+        width: unset; 
         height: 90%;
         border-radius: 0;
         aspect-ratio: 1;
@@ -114,9 +173,10 @@ const {elements, imgClasses, 'class': _class, slideClasses, id, wrapperClasses} 
     .swiper-pagination-bullet-active {
         opacity: 1;
     }
-    .swiper-pagination-bullet-active::after{
+    .swiper-pagination-bullet::after{
         position: absolute;
         content: '';
+        opacity: 0;
         
         width: 110%;
         height: 110%;
@@ -127,6 +187,9 @@ const {elements, imgClasses, 'class': _class, slideClasses, id, wrapperClasses} 
         --drop-shadow-color: #000a;
         filter: drop-shadow(var(--drop-shadow-color) 2px 2px 3px);
     }
+    .swiper-pagination-bullet-active::after{
+        opacity: 1;
+    }
     .swiper-pagination-bullet-active-main{
         opacity: 1;
     }
@@ -134,7 +197,7 @@ const {elements, imgClasses, 'class': _class, slideClasses, id, wrapperClasses} 
 <script>
     import Swiper from 'swiper'
     import { Pagination } from 'swiper/modules'
-    import { setSwiper } from '../function/swiper';
+    import { getSwiper, setSwiper } from '../function/swiper';
     declare module global {
         interface Window {
             swiper?: Swiper;
@@ -143,7 +206,9 @@ const {elements, imgClasses, 'class': _class, slideClasses, id, wrapperClasses} 
 
     document.querySelectorAll('[data-swiper]').forEach(e => {
         if(!(e instanceof HTMLElement))  return;
-        setSwiper(e, new Swiper(e, {
+        (e.querySelector("[show-all-signs]") as HTMLElement).addEventListener('click', () => e.querySelector('.pagination-wrapper').classList.add('active'));
+        (e.querySelector('[carousel-pagination]') as HTMLElement).addEventListener('click', () => e.querySelector('.pagination-wrapper').classList.remove('active'));
+        const m = setSwiper(e, new Swiper(e, {
             pagination: {
                 el: ".swiper-pagination",
                 dynamicBullets: true,
@@ -158,5 +223,9 @@ const {elements, imgClasses, 'class': _class, slideClasses, id, wrapperClasses} 
                 Pagination
             ]
         }));
+        const t = new ResizeObserver(() =>{
+            m.pagination.update()
+        });
+        t.observe(e);
     })
 </script>
