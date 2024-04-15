@@ -42,7 +42,8 @@ const LINK_TYPES_INTERNAL: {[key in LinkType]: LinkTypeObj} = {
             ]
         },
         website_name: 'GitHub',
-        color: '#1c2128'
+        color: '',
+        classes: "color-[#1c2128] dark:text-[#ddd]",
     }
 }
 

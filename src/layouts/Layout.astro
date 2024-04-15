@@ -1,9 +1,10 @@
 ---
 interface Props {
 	title: string;
+	description: string;
 }
 
-const { title } = Astro.props;
+const { title, description } = Astro.props;
 import swiperStyles from '../../node_modules/swiper/swiper-bundle.min.css?url';
 ---
 
@@ -11,7 +12,7 @@ import swiperStyles from '../../node_modules/swiper/swiper-bundle.min.css?url';
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
+		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="preload" href={swiperStyles} as="style"/>

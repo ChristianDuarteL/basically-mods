@@ -15,6 +15,7 @@ export interface LinkTypeObj {
     icon?: Icon,
     website_name: string,
     color: string
+    classes?: string
 }
 
 export interface Link {
