@@ -1,0 +1,103 @@
+---
+import Header from "../components/Header.astro";
+import { format, formatISO } from 'date-fns'
+const { content: { title, description, publishedDate, by, keywords, bannerImage } } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+        <meta name="keywords" content={keywords}>
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body class="bg-white dark:bg-gray-900 dark:text-white">
+        <Header
+            sticky={true}
+            links={[
+                {
+                    name: "Signs",
+                    link: "#signs"
+                },
+                {
+                    name: "Arrows",
+                    link: "#arrows"
+                },
+                /*{
+                    name: "Badges",
+                    link: "#badges"
+                },
+                {
+                    name: "Devlog",
+                    link: "/devlog"
+                }*/
+            ]}
+        ></Header>
+        <main class="w-full">
+            <article class="flex flex-col items-center">
+                <header class="flex flex-col items-center max-w-full w-full">
+                    { bannerImage && <div class="md:w-[980px] max-w-full"> <img class="w-full object-contain" src={bannerImage} /> </div> }
+                    <div class={`max-w-[calc(100%-4rem)] p-0 mt-4 md:p-6 flex flex-col md:-mt-16 bg-white pb-0 ${bannerImage ? 'w-[calc(520px+4rem)]' : 'mt-10 md:mt-3 w-full'}`}>
+                        <h2 class="text-2xl">{title}</h2>
+                        <span class="text-light">
+                            {by}
+                        </span>
+                        <time class="text-light text-sm" datetime={formatISO(new Date(publishedDate))}>
+                            {format(new Date(publishedDate), 'MMMM dd, yyyy')}
+                        </time>
+                    </div>
+                </header>
+                <div class="content mt-4 max-w-[calc(100%-4rem)] w-[calc(520px+4rem)] md:px-6">
+                    <slot />
+                </div>
+            </article>
+        </main>
+	</body>
+</html>
+<script>
+	import '../function/gsap'
+</script>
+<style is:global >
+    article .content {
+        & p {
+            padding-block: .5rem;
+        }
+    }
+</style>
+
+<style is:global>
+	:root {
+		--accent: 136, 58, 234;
+		--accent-light: 224, 204, 250;
+		--accent-dark: 49, 10, 101;
+		--accent-gradient: linear-gradient(
+			45deg,
+			rgb(var(--accent)),
+			rgb(var(--accent-light)) 30%,
+			white 60%
+		);
+	}
+	html {
+		font-family: system-ui, sans-serif;
+		
+		background-size: 224px;
+	}
+	code {
+		font-family:
+			Menlo,
+			Monaco,
+			Lucida Console,
+			Liberation Mono,
+			DejaVu Sans Mono,
+			Bitstream Vera Sans Mono,
+			Courier New,
+			monospace;
+	}
+	body{
+		margin: 0;
+	}
+</style>
