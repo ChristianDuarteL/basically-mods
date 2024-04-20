@@ -1,10 +1,16 @@
 ---
+interface Props{
+    title: string;
+    subtitle?: string;
+}
+
+const {title, subtitle} = Astro.props;
 ---
 
 <div class="flex flex-col items-center justify-center h-[100vh] w-full overflow-hidden" home-texts>
     <div class="flex flex-col items-center">
-        <h1 class="text-6xl font-medium">Basically</h1>
-        <h2 class="mt-3 text-2xl font-semibold text-gray-600 dark:text-gray-500">We basically make mods.</h2>
+        <h1 class="text-6xl font-medium">{title}</h1>
+        {subtitle && <h2 class="mt-3 text-2xl font-semibold text-gray-600 dark:text-gray-500">{subtitle}</h2>}
     </div>
 </div>
 
