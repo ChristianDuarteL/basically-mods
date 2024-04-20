@@ -3,7 +3,9 @@ import Header from "../components/Header.astro";
 import { format, formatISO } from 'date-fns'
 import Image from "../components/Image.astro";
 const { content: { title, description, publishedDate, by, keywords, bannerImage } } = Astro.props;
-import baseStyles from '../styles/base.css';
+
+import baseStyles from '../styles/base.css?url';
+
 ---
 
 <!doctype html>
