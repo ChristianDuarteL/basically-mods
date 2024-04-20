@@ -14,6 +14,7 @@ jobs:
           username: ${{secrets.SSH_USER}}
 
           script: |
+            cd ${{secrets.SSH_PROJECT_DIR}}
             git pull
             rm dist -R
             npm run build
