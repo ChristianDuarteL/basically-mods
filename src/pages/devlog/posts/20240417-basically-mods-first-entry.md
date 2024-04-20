@@ -16,7 +16,7 @@ Etiam feugiat neque sed justo pharetra, ultricies laoreet ligula fermentum. Pell
 
 Mauris congue sapien sed finibus efficitur. Integer lobortis malesuada ex sit amet luctus. Pellentesque euismod varius sem vel condimentum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fringilla mi et aliquam consectetur. In imperdiet volutpat pharetra. Duis aliquet ex a nisi hendrerit, in rutrum urna placerat. Curabitur vitae ullamcorper augue.
 
-![image info](https://picsum.photos/1280/720)
+<img src="https://picsum.photos/1280/720" width="1280" height="720" alt="image-info">
 
 Duis consequat ultrices tellus a sagittis. Morbi mauris urna, maximus ac scelerisque sed, hendrerit eu orci. Proin vel lacinia ipsum, a euismod est. Nam at nulla semper, porttitor quam vitae, semper elit. Aenean felis purus, faucibus sed turpis dictum, fermentum faucibus arcu. Praesent id ante eros. Cras varius ultricies orci, dapibus aliquet est. Duis rutrum, quam sed eleifend fringilla, elit tellus eleifend enim, sit amet posuere eros turpis quis lectus. Fusce vehicula efficitur lacus, et finibus magna placerat et. Phasellus tristique sapien eu maximus volutpat. Nulla a tellus accumsan, iaculis tortor non, sagittis velit. Suspendisse potenti. Donec congue vulputate ligula, vitae viverra nisl rutrum vitae.
 

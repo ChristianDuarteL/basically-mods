@@ -1,0 +1,33 @@
+---
+
+interface Props {
+    src: string;
+    'class': string;
+    full_width?: boolean;
+    full_height?: boolean;
+    fit?: 'contain' | 'cover';
+    imgClasses?: string;
+    alt: string;
+}
+
+const {src, 'class': _class, full_width, full_height, fit, imgClasses, alt} = Astro.props;
+
+const ifDefined = (m?: string | null) => m ? m : '';
+const ifTrue = (m: boolean, str: string) => m ? str : '';
+
+---
+
+<div skeleton-element skeleton-image-wrapper class={_class}> <img skeleton-image alt={alt} class={!imgClasses ? `${ifTrue(!!full_width, "w-full")}  ${ifTrue(!!full_height, "h-full")} ${'object-' + (fit ?? 'contain')}` : imgClasses} src={src} /> </div>
+
+<script>
+    document.querySelectorAll('[skeleton-image-wrapper]').forEach(_wrapper => {
+        const wrapper = _wrapper as HTMLElement;
+        const img = wrapper.querySelector('img[skeleton-image]') as HTMLImageElement;
+        wrapper.classList.add('loading')
+        img.addEventListener('load', () => wrapper.classList.remove('loading'));
+        img.addEventListener('error', () => {
+            wrapper.classList.remove('loading')
+            wrapper.classList.add('error')
+        });
+    })
+</script>
