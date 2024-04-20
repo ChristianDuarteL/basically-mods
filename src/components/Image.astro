@@ -1,11 +1,16 @@
 ---
 
+const FITS = Object.freeze({
+    'cover': 'object-cover',
+    'contain': 'object-cover',
+})
+
 interface Props {
     src: string;
     'class': string;
     full_width?: boolean;
     full_height?: boolean;
-    fit?: 'contain' | 'cover';
+    fit?: keyof typeof FITS;
     imgClasses?: string;
     alt: string;
 }
@@ -17,7 +22,7 @@ const ifTrue = (m: boolean, str: string) => m ? str : '';
 
 ---
 
-<div skeleton-element skeleton-image-wrapper class={_class}> <img skeleton-image alt={alt} class={!imgClasses ? `${ifTrue(!!full_width, "w-full")}  ${ifTrue(!!full_height, "h-full")} ${'object-' + (fit ?? 'contain')}` : imgClasses} src={src} /> </div>
+<div skeleton-element skeleton-image-wrapper class={_class}> <img skeleton-image alt={alt} class={!imgClasses ? `${ifTrue(!!full_width, "w-full")}  ${ifTrue(!!full_height, "h-full")} ${FITS[fit]} ` : imgClasses} src={src} /> </div>
 
 <script>
     document.querySelectorAll('[skeleton-image-wrapper]').forEach(_wrapper => {
