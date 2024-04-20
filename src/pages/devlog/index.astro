@@ -1,15 +1,28 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
+import Image from '../../components/Image.astro';
+import { formatISO } from 'date-fns/formatISO';
+import { format } from 'date-fns/format';
+
+interface PostData{
+	title: string
+	description: string
+	keywords: string
+	published: boolean
+	slug: string
+	publishedDate: string
+	bannerImage: string
+	by: string
+}
+
+const posts = await Astro.glob<PostData>('./posts/*.md');;
 ---
 
 <Layout title="Basically Devlog" description='A devlog of basically mods. We show cool stuff of our development process.'>
 	<Header
+		sticky
 		links={[
-			{
-				name: "Badges",
-				link: "/#badges"
-			},
 			{
 				name: "Arrows",
 				link: "/#arrows"
@@ -24,7 +37,24 @@ import Header from '../../components/Header.astro';
 			}
 		]}
 	></Header>
-	<main>
+	<main class="flex flex-col items-center">
+		<div class="flex flex-col items-center my-10">
+			<h1 class="my-1 text-3xl">Basically mods' devlog</h1>
+			<span class="my-1 text-xl text-gray-500">Basically, a devlog</span>
+		</div>
+		<div class="max-w-[calc(100%-4rem)] w-[calc(520px+4rem)] flex flex-col gap-8">
+			{
+				posts.map(e => (<a href={e.url} class="hover:scale-105 transition-transform"><article class="flex md:h-32 gap-4">
+					<Image src={e.frontmatter.bannerImage} alt={e.frontmatter.title + ' banner image'} class='aspect-square rounded-md overflow-hidden' fit='cover' full_height></Image>
+					<div class="flex-1">
+						<h2 class="text-xl">{e.frontmatter.title}</h2>
+						<div><span class="text-sm">{e.frontmatter.by}</span> - <time class="text-sm" datetime={formatISO(new Date(e.frontmatter.publishedDate))}>{format(new Date(e.frontmatter.publishedDate), 'MMMM dd, yyyy')}</time></div>
+						<p>{e.frontmatter.description}</p>
+					</div>
+				</article></a>)
+				)
+			}
+		</div>
 	</main>
 </Layout>
 
