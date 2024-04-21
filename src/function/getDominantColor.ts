@@ -1,12 +1,12 @@
-function getAverageRGBFromZone(zone, opts) {
+interface AverageRGBFromZoneOptions{
+    accuracy: number;
+}
+
+function getAverageRGBFromZone(zone: ImageData, opts: AverageRGBFromZoneOptions) {
     var rgb = {r:0,g:0,b:0},
     len = zone.data.length,
     count = 0,
     i = -4;
-    
-    opts = opts || {};
-    
-    opts.accuracy = opts.accuracy || 1;
     
     var blockSize = opts.accuracy;
     

@@ -17,7 +17,6 @@ interface Props {
 
 const {src, 'class': _class, full_width, full_height, fit, imgClasses, alt} = Astro.props;
 
-const ifDefined = (m?: string | null) => m ? m : '';
 const ifTrue = (m: boolean, str: string) => m ? str : '';
 
 ---

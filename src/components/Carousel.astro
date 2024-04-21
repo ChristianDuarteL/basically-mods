@@ -198,17 +198,16 @@ const {elements, imgClasses, 'class': _class, slideClasses, id, wrapperClasses} 
 <script>
     import Swiper from 'swiper'
     import { Pagination } from 'swiper/modules'
-    import { getSwiper, setSwiper } from '../function/swiper';
-    declare module global {
-        interface Window {
-            swiper?: Swiper;
-        }
+    import { setSwiper } from '../function/swiper';
+
+    interface SwiperMouseEvent {
+        swiper?: Swiper;
     }
+
+    let swiperOpened : Swiper | null = null;
 
     document.querySelectorAll('[data-swiper]').forEach(e => {
         if(!(e instanceof HTMLElement))  return;
-        (e.querySelector("[show-all-signs]") as HTMLElement).addEventListener('click', () => e.querySelector('.pagination-wrapper').classList.add('active'));
-        (e.querySelector('[carousel-pagination]') as HTMLElement).addEventListener('click', () => e.querySelector('.pagination-wrapper').classList.remove('active'));
         const m = setSwiper(e, new Swiper(e, {
             pagination: {
                 el: ".swiper-pagination",
@@ -224,9 +223,25 @@ const {elements, imgClasses, 'class': _class, slideClasses, id, wrapperClasses} 
                 Pagination
             ]
         }));
+        
+        (e.querySelector("[show-all-signs]") as HTMLElement).addEventListener('click', () => {
+            m.el.querySelector('.pagination-wrapper').classList.add('active');
+            swiperOpened = m
+        });
+        (e.querySelector('[carousel-pagination]') as HTMLElement).addEventListener('click', () => {
+            m.el.querySelector('.pagination-wrapper').classList.remove('active');
+        });
+        e.addEventListener('click', (e: MouseEvent & SwiperMouseEvent) => e.swiper = m);
+        
         const t = new ResizeObserver(() =>{
             m.pagination.update()
         });
         t.observe(e);
+    })
+
+    document.addEventListener('click', (event: MouseEvent & SwiperMouseEvent) => {
+        if(!event.swiper){
+            swiperOpened?.el.querySelector('.pagination-wrapper').classList.remove('active')
+        }
     })
 </script>
