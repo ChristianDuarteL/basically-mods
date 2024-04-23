@@ -17,3 +17,6 @@ export const ARROWS: Arrow[] = [
         description: ['Combining a torch and an arrow, now you can make arrows that place torches on the block they land.', 'What would it do to players?']
     }
 ]
+
+export const getEntityUrl = (arrow: Arrow) => `/img/arrows/entities/${arrow.slug}.png`;
+export const getItemUrl = (arrow: Arrow) => `/img/arrows/items/${arrow.slug}.png`;
