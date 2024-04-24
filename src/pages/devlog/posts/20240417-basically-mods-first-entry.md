@@ -1,5 +1,5 @@
 ---
-title: Test post
+title: Dev
 description: 'This is a test post on our blog'
 keywords: Basically mods, Blog, Basically Blog
 published: true
