@@ -1,25 +1,44 @@
 ---
+const {BASE_URL} = import.meta.env;
+
 interface Link {
     name: string;
     link: string;
+    canonical?: boolean;
 }
 
 interface Props {
-	links?: Link[];
     sticky?: boolean;
 }
 
-const { links, sticky } = Astro.props ;
+const { sticky } = Astro.props ;
+
+
+const links: Link[] = [
+    {
+        name: "Signs",
+        link: "#signs"
+    },
+    {
+        name: "Arrows",
+        link: "#arrows"
+    },
+    {
+        name: "Devlog",
+        link: BASE_URL + "devlog",
+        canonical: true
+    }
+]
 ---
 
 <header class={`w-full backdrop-blur-sm bg-white/50 ${sticky ? 'sticky' : 'fixed'} top-0 z-100`}>
     <nav class="w-[980px] mx-auto flex justify-between">
-        <a href="/" class="p-3">
+        <a rel="canonical" href={BASE_URL} class="p-3">
             Basically<span class="max-sm:hidden" basically-suffix></span>.
         </a>
         <div class="flex">
             {
-                links?.map(e => <a class="p-3" href={e.link}>{e.name}</a>)
+                links?.map(e => <a rel={e.canonical ? "canonical" : undefined} class="p-3" href={e.link}>{e.name}</a>)
             }
         </div>
     </nav>

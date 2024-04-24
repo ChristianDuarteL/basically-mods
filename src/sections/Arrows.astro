@@ -5,14 +5,15 @@ import { ARROWS, getEntityUrl, getItemUrl } from "../consts/arrows";
 import { MODS } from "../consts/mods";
 
 const arrows = ARROWS.map(e => ({
-    link: getEntityUrl(e)
+    link: getEntityUrl(e),
+    name: e.name
 }));
 
 ---
 
 <div class="flex flex-col items-center  justify-center min-h-[150vh] min-w-full">
     <div class="sticky h-[100vh] top-0 w-full max-w-[calc(100%-2rem)] flex flex-col items-end justify-center gap-[15vh] overflow-visible">
-        {arrows.map((e, i) => <img class="w-[125px] -translate-x-[400px]" data-arrow={i} src={e.link} />)}
+        {arrows.map((e, i) => <img class="w-[125px] -translate-x-[400px]" data-arrow={i} src={e.link} alt={e.name} />)}
     </div>
     <div class="w-full mt-[-50vh] flex bg-white/20 sm:bg-white/40 dark:bg-gray-900/20 dark:sm:bg-gray-900/40 lg:bg-transparent dark:lg:bg-transparent backdrop-blur-sm md:backdrop-blur-none items-center sm:items-center justify-center min-h-screen z-10 gap-6" id="arrows">
         <div class="flex w-[980px] max-w-[calc(100%-4rem)] flex-col sm:flex-row">
