@@ -1,5 +1,5 @@
 ---
-const {BASE_URL} = import.meta.env;
+const {APP_URL} = import.meta.env;
 
 interface Link {
     name: string;
@@ -25,7 +25,7 @@ const links: Link[] = [
     },
     {
         name: "Devlog",
-        link: BASE_URL + "devlog",
+        link: APP_URL + "devlog",
         canonical: true
     }
 ]
@@ -33,7 +33,7 @@ const links: Link[] = [
 
 <header class={`w-full backdrop-blur-sm bg-white/50 ${sticky ? 'sticky' : 'fixed'} top-0 z-100`}>
     <nav class="w-[980px] mx-auto flex justify-between">
-        <a rel="canonical" href={BASE_URL} class="p-3">
+        <a rel="canonical" href={APP_URL} class="p-3">
             Basically<span class="max-sm:hidden" basically-suffix></span>.
         </a>
         <div class="flex">
