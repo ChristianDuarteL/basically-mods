@@ -20,23 +20,7 @@ const posts = await Astro.glob<PostData>('./posts/*.md');;
 ---
 
 <Layout title="Basically Devlog" description='A devlog of basically mods. We show cool stuff of our development process.'>
-	<Header
-		sticky
-		links={[
-			{
-				name: "Arrows",
-				link: "/#arrows"
-			},
-			{
-				name: "Signs",
-				link: "/#signs"
-			},
-			{
-				name: "Devlog",
-				link: "/devlog"
-			}
-		]}
-	></Header>
+	<Header sticky></Header>
 	<main class="flex flex-col items-center">
 		<div class="flex flex-col items-center my-10">
 			<h1 class="my-1 text-3xl">Basically mods' devlog</h1>
