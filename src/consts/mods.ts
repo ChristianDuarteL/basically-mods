@@ -11,20 +11,7 @@ export const MODS: Record<ModsMap, Mod> = {
         abstract: "From seeking arrows to pacify arrows, this mod adds a lot of new arrows for you to be the best archer of all Minecraft.",
         modName: "Basically Arrows",
         badges: ['MOD', 'CLIENT_AND_SERVER'],
-        links: [
-            {
-                type: "curseforge",
-                url: ""
-            },
-            {
-                type: 'modthrint',
-                url: ""
-            },
-            {
-                type: 'github',
-                url: ""
-            }
-        ]
+        comming_soon: true,
     },
     signs: {
         modId: "signs",

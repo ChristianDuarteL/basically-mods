@@ -9,22 +9,29 @@ interface Props {
 }
 
 const { mod, "class": _class } = Astro.props;
-const {links, modName, abstract, badges} = mod
+const {links, modName, abstract, badges, comming_soon} = mod
 ---
 
-<div class={`flex-col flex justify-center ${_class}`}>
-    <header class="flex flex-col flex-wrap items-start mb-2 gap-2">
-        <h1 class="text-3xl">{modName}</h1>
-        <div class="flex gap-2">
-            {badges?.map(e => <span class={`${BADGE_TYPES[e].classes} text-xs`}>{BADGE_TYPES[e].text}</span>)}
-        </div>
-    </header>
-    <p class="text-lg text-balance">{abstract}</p>
-    <div class="mt-10 flex gap-3">
-        {links?.map(link => <a href={link.url} target="_blank" class={`text-4xl inline-block opacity-80 transform hover:opacity-100 hover:scale-125 motion-safe:transition motion-reduce:any-hover:scale-100] ${LINK_TYPES[link.type].classes ?? ''}`} style={{color: LINK_TYPES[link.type].color}}>
-            <svg viewBox={LINK_TYPES[link.type].icon.viewbox} width="1em" height="1em">
-                {LINK_TYPES[link.type].icon.paths.map(pathObj => <path fill="currentColor" clip-rule={pathObj.clipRule} fill-rule={pathObj.fillRule} d={pathObj.path}></path>)}
-            </svg>
-        </a>)}
+<div class={`flex-col flex justify-center gap-10 ${_class}`}>
+    <div class="flex flex-col justify-start">
+        <header class="flex flex-col flex-wrap items-start mb-2 gap-2">
+            <h1 class="text-3xl">{modName}</h1>
+            <div class="flex gap-2">
+                {badges?.map(e => <span class={`${BADGE_TYPES[e].classes} text-xs`}>{BADGE_TYPES[e].text}</span>)}
+            </div>
+        </header>
+        <p class="text-lg text-balance">{abstract}</p>
+    </div>
+    <div class="flex flex-col gap-4">
+        {links && links.length > 0 && <div class="flex gap-3">
+            {links.map(link => <a href={link.url} target="_blank" class={`text-4xl inline-block opacity-80 transform hover:opacity-100 hover:scale-125 motion-safe:transition motion-reduce:any-hover:scale-100] ${LINK_TYPES[link.type].classes ?? ''}`} style={{color: LINK_TYPES[link.type].color}}>
+                <svg viewBox={LINK_TYPES[link.type].icon.viewbox} width="1em" height="1em">
+                    {LINK_TYPES[link.type].icon.paths.map(pathObj => <path fill="currentColor" clip-rule={pathObj.clipRule} fill-rule={pathObj.fillRule} d={pathObj.path}></path>)}
+                </svg>
+            </a>)}
+        </div>}
+        {comming_soon && <div class="px-4 py-2 rounded-md uppercase text-white bg-black/80  font-semibold self-start">
+            Comming soon
+        </div>}
     </div>
 </div>

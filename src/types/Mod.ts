@@ -7,4 +7,5 @@ export interface Mod {
     abstract: string;
     links?: Link[];
     badges?: BadgeType[];
+    comming_soon?: boolean;
 }
