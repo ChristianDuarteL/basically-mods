@@ -9,7 +9,7 @@ interface Props {
 }
 
 const { mod, "class": _class } = Astro.props;
-const {links, modName, abstract, badges, comming_soon} = mod
+const {links, modName, abstract, badges, coming_soon} = mod
 ---
 
 <div class={`flex-col flex justify-center gap-10 ${_class}`}>
@@ -30,8 +30,8 @@ const {links, modName, abstract, badges, comming_soon} = mod
                 </svg>
             </a>)}
         </div>}
-        {comming_soon && <div class="px-4 py-2 rounded-md uppercase text-white bg-black/80  font-semibold self-start">
-            Comming soon
+        {coming_soon && <div class="px-4 py-2 rounded-md uppercase text-white bg-gray-900/80 dark:text-gray-900 dark:bg-white font-semibold self-start">
+            Coming soon
         </div>}
     </div>
 </div>
