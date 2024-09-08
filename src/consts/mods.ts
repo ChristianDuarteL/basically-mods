@@ -21,15 +21,11 @@ export const MODS: Record<ModsMap, Mod> = {
         links: [
             {
                 type: "curseforge",
-                url: ""
-            },
-            {
-                type: 'modthrint',
-                url: ""
+                url: "https://www.curseforge.com/minecraft/mc-mods/basically-signs"
             },
             {
                 type: 'github',
-                url: ""
+                url: "https://github.com/ChristianDuarteL/basically-signs"
             }
         ]
     }
