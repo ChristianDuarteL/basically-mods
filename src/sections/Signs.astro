@@ -92,7 +92,6 @@ import { SIGNS } from "../consts/signs";
 
     window.addEventListener('load', () => {
         const swiper = getSwiper(document.getElementById('signsCarousel'))
-        console.log(swiper.activeIndex)
         swiper.on('slideChange', () => reloadSignsBackground(swiper.activeIndex))
     })
     reloadSignsBackground(0);

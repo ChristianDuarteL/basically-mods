@@ -42,7 +42,7 @@ export default function (imgEl: HTMLImageElement, _ACCURACY: number = 100, secti
     try {
         return sections.map(section => getAverageRGBFromZone(context.getImageData(width * section[0], height * section[1], width * section[2], height * section[3]), {accuracy: _ACCURACY}))
     } catch(e) {
-        console.log('image cannot be processed', e);
+        console.error('image cannot be processed', e);
         return [defaultRGB, defaultRGB];
     }
 }
