@@ -72,7 +72,6 @@ const arrows = ARROWS.map(e => ({
 
     window.addEventListener('load', () => {
         const swiper = getSwiper(document.getElementById('arrowsCarousel'))
-        console.log(swiper.activeIndex)
         reloadArrowsText(swiper.activeIndex)
         swiper.on('slideChange', () => reloadArrowsText(swiper.activeIndex))
     })

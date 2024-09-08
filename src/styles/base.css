@@ -11,8 +11,29 @@
     background-position-x: 180%;
     animation: 1s loading ease-in-out infinite;
 }
+
 [skeleton-element].error{
     background-color: #e8b8b8;;
+}
+
+@media (prefers-color-scheme: dark) {
+    [skeleton-element].loading{
+        --loading-grey: #222;
+        background: linear-gradient(
+            100deg,
+            rgba(255, 255, 255, 0) 40%,
+            rgba(255, 255, 255, .1) 50%,
+            rgba(255, 255, 255, 0) 60%
+        ) var(--loading-grey);
+        background-size: 200% 100%;
+        background-position-x: 180%;
+        animation: 1s loading ease-in-out infinite;
+    }
+    
+    [skeleton-element].error{
+        background-color: #4b2b2b;;
+    }
+    
 }
 
 @keyframes loading {

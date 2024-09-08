@@ -1,5 +1,5 @@
 ---
-const {BASE_URL} = import.meta.env;
+const {APP_URL} = import.meta.env;
 
 interface Link {
     name: string;
@@ -17,23 +17,23 @@ const { sticky } = Astro.props ;
 const links: Link[] = [
     {
         name: "Signs",
-        link: "#signs"
+        link: APP_URL + "#signs"
     },
     {
         name: "Arrows",
-        link: "#arrows"
+        link: APP_URL + "#arrows"
     },
     {
         name: "Devlog",
-        link: BASE_URL + "devlog",
+        link: APP_URL + "devlog",
         canonical: true
     }
 ]
 ---
 
-<header class={`w-full backdrop-blur-sm bg-white/50 ${sticky ? 'sticky' : 'fixed'} top-0 z-100`}>
+<header class={`w-full backdrop-blur-sm bg-white/50 dark:bg-gray-900/50 ${sticky ? 'sticky' : 'fixed'} top-0 z-100`}>
     <nav class="w-[980px] mx-auto flex justify-between">
-        <a rel="canonical" href={BASE_URL} class="p-3">
+        <a rel="canonical" href={APP_URL} class="p-3">
             Basically<span class="max-sm:hidden" basically-suffix></span>.
         </a>
         <div class="flex">

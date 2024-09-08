@@ -2,7 +2,7 @@
 import Header from "../components/Header.astro";
 import { format, formatISO } from 'date-fns'
 import Image from "../components/Image.astro";
-const { content: { title, description, publishedDate, by, keywords, bannerImage } } = Astro.props;
+const { content: { title, subtitle, description, publishedDate, by, keywords, bannerImage } } = Astro.props;
 
 import baseStyles from '../styles/base.css?url';
 
@@ -27,9 +27,10 @@ import baseStyles from '../styles/base.css?url';
         <main class="w-full">
             <article class="flex flex-col items-center">
                 <header class="flex flex-col items-center max-w-full w-full">
-                    { bannerImage && <Image alt={title + ' banner'} class="md:w-[980px] max-w-full aspect-[1200/500] rounded-md overflow-hidden" src={bannerImage}></Image> }
-                    <div class={`max-w-[calc(100%-4rem)] p-0 mt-4 md:p-6 flex flex-col md:-mt-16 bg-white pb-0 ${bannerImage ? 'w-[calc(520px+4rem)]' : 'mt-10 md:mt-3 w-full'}`}>
+                    { bannerImage && <Image alt={title + ' banner'} class="md:w-[980px] md:max-w-[95%] max-w-full aspect-[1200/500] rounded-none md:rounded-md overflow-hidden" src={bannerImage}></Image> }
+                    <div class={`max-w-[calc(100%-4rem)] p-0 mt-4 md:p-6 flex flex-col md:-mt-16 bg-white dark:bg-gray-900 pb-0 ${bannerImage ? 'w-[calc(520px+4rem)]' : 'mt-10 md:mt-3 w-full'}`}>
                         <h2 class="text-2xl">{title}</h2>
+                        <h2 class="text-lg">{subtitle}</h2>
                         <span class="text-light">
                             {by}
                         </span>
