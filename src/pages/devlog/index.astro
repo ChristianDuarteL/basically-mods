@@ -6,6 +6,7 @@ import { Image } from 'astro:assets';
 import { formatISO } from 'date-fns/formatISO';
 import { format } from 'date-fns/format';
 import { getCollection } from 'astro:content';
+import Footer from '../../components/Footer.astro';
 
 const posts = await getCollection('posts');
 ---
@@ -33,6 +34,7 @@ const posts = await getCollection('posts');
 			}
 		</div>
 	</main>
+	<Footer></Footer>
 </Layout>
 
 <style>
