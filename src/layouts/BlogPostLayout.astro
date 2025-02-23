@@ -1,11 +1,13 @@
 ---
 import Header from "../components/Header.astro";
 import { format, formatISO } from 'date-fns'
-import Image from "../components/Image.astro";
-const { content: { title, subtitle, description, publishedDate, by, keywords, bannerImage, author_username } } = Astro.props;
+import Skeleton from "../components/Skeleton.astro";
+const { title, subtitle, description, publishedDate, by, keywords, bannerImage, author_username } = Astro.props; 
 
 import baseStyles from '../styles/base.css?url';
-
+import { getImage, Image } from "astro:assets";
+import Footer from "../components/Footer.astro";
+console.log(Astro.props); 
 ---
 
 <!doctype html>
@@ -27,7 +29,9 @@ import baseStyles from '../styles/base.css?url';
         <main class="w-full">
             <article class="flex flex-col items-center">
                 <header class="flex flex-col items-center max-w-full w-full">
-                    { bannerImage && <Image alt={title + ' banner'} class="md:w-[980px] md:max-w-[95%] max-w-full aspect-[1200/500] rounded-none md:rounded-md overflow-hidden" src={bannerImage}></Image> }
+                    { bannerImage && <Skeleton class="md:w-[980px] md:max-w-[95%] max-w-full aspect-[1200/500] rounded-none md:rounded-md overflow-hidden">
+                        <Image alt={title + ' banner'} class="md:w-[980px] md:max-w-[95%] max-w-full aspect-[1200/500] rounded-none md:rounded-md overflow-hidden" src={bannerImage}></Image>
+                    </Skeleton> }
                     <div class={`max-w-[calc(100%-4rem)] p-0 mt-4 md:p-6 flex flex-col md:-mt-16 bg-white dark:bg-gray-900 pb-0 ${bannerImage ? 'w-[calc(520px+4rem)]' : 'mt-10 md:mt-3 w-full'}`}>
                         <h2 class="text-2xl">{title}</h2>
                         <h2 class="text-lg">{subtitle}</h2>
@@ -39,11 +43,12 @@ import baseStyles from '../styles/base.css?url';
                         </time>
                     </div>
                 </header>
-                <div class="content mt-4 max-w-[calc(100%-4rem)] w-[calc(520px+4rem)] md:px-6">
+                <div class="content mt-4 max-w-[calc(100%-4rem)] w-[calc(520px+4rem)] md:px-6 mb-8">
                     <slot />
                 </div>
             </article>
         </main>
+        <Footer></Footer>
 	</body>
 </html>
 <script>
@@ -64,15 +69,12 @@ import baseStyles from '../styles/base.css?url';
 
 </script>
 <style is:global >
-    article .content {
-        & p {
+    article .content p {
             padding-block: .5rem;
-        }
+    }
 
-        & img{
-            aspect-ratio: ;
-            border-radius: 0.375rem;
-        }
+    article .content img{
+        border-radius: 0.375rem;
     }
 </style>
 

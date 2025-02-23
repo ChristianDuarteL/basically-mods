@@ -1,0 +1,34 @@
+---
+
+const FITS = Object.freeze({
+    'cover': 'object-cover',
+    'contain': 'object-cover',
+})
+
+interface Props {
+    'class': string;
+}
+
+const {'class': _class} = Astro.props;
+
+const ifTrue = (m: boolean, str: string) => m ? str : '';
+
+---
+
+<div skeleton-element skeleton-image-wrapper class={_class}> <slot></slot> </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        console.log('loaded');
+        document.querySelectorAll('[skeleton-image-wrapper]').forEach(_wrapper => {
+            const wrapper = _wrapper as HTMLElement;
+            const img = wrapper.querySelector('img') as HTMLImageElement;
+            wrapper.classList.add('loading');
+            img.addEventListener('load', () => wrapper.classList.remove('loading'));
+            img.addEventListener('error', () => {
+                wrapper.classList.remove('loading')
+                wrapper.classList.add('error')
+            });
+        })
+    })
+</script>
