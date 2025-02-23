@@ -19,7 +19,6 @@ const ifTrue = (m: boolean, str: string) => m ? str : '';
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        console.log('loaded');
         document.querySelectorAll('[skeleton-image-wrapper]').forEach(_wrapper => {
             const wrapper = _wrapper as HTMLElement;
             const img = wrapper.querySelector('img') as HTMLImageElement;
