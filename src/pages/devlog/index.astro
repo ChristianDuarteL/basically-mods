@@ -1,23 +1,14 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
-import Image from '../../components/Image.astro';
+import Skeleton from '../../components/Skeleton.astro';
+import { Image } from 'astro:assets';
 import { formatISO } from 'date-fns/formatISO';
 import { format } from 'date-fns/format';
+import { getCollection } from 'astro:content';
+import Footer from '../../components/Footer.astro';
 
-interface PostData{
-	title: string
-	subtitle: string
-	description: string
-	keywords: string
-	published: boolean
-	publishedDate: string
-	bannerImage: string
-	by: string
-	author_username: string
-}
-
-const posts = await Astro.glob<PostData>('./posts/*.md');;
+const posts = await getCollection('posts');
 ---
 
 <Layout title="Basically Devlog" description='A devlog of basically mods. We show cool stuff of our development process.'>
@@ -29,24 +20,25 @@ const posts = await Astro.glob<PostData>('./posts/*.md');;
 		</div>
 		<div class="max-w-[calc(100%-4rem)] w-[calc(520px+4rem)] flex flex-col gap-8">
 			{
-				posts.map(e => (<a href={e.url} class="hover:scale-105 transition-transform"><article class="flex md:h-32 gap-4">
-					<Image src={e.frontmatter.bannerImage} alt={e.frontmatter.title + ' banner image'} class='aspect-square rounded-md overflow-hidden h-32' fit='cover' full_height></Image>
+				posts.map(e => (<a href={`/devlog/${e.id}`} class="hover:scale-105 transition-transform"><article class="flex md:h-32 gap-4">
+					<Skeleton class='aspect-square rounded-md overflow-hidden h-32'>
+						<Image src={e.data.bannerImage} alt={e.data.title + ' banner image'} class='aspect-square rounded-md overflow-hidden h-32 w-32 object-cover' layout="none"></Image>
+					</Skeleton>
 					<div class="flex-1">
-						<h2 class="text-xl">{e.frontmatter.title}</h2>
-						<div><span class="text-sm">{e.frontmatter.by}</span> - <time class="text-sm" datetime={formatISO(new Date(e.frontmatter.publishedDate))}>{format(new Date(e.frontmatter.publishedDate), 'MMMM dd, yyyy')}</time></div>
-						<p>{e.frontmatter.description}</p>
+						<h2 class="text-xl">{e.data.title}</h2>
+						<div><span class="text-sm">{e.data.by}</span> - <time class="text-sm" datetime={formatISO(new Date(e.data.publishedDate))}>{format(new Date(e.data.publishedDate), 'MMMM dd, yyyy')}</time></div>
+						<p>{e.data.description}</p>
 					</div>
 				</article></a>)
 				)
 			}
 		</div>
 	</main>
+	<Footer></Footer>
 </Layout>
 
 <style>
 	h1{
 		transform: scale(calc(var(--scroll, 0) * 200 + 1));
-	}
-	main {
 	}
 </style>
