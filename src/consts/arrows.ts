@@ -1,5 +1,4 @@
 import { type Arrow } from "../types/Arrows"
-const {APP_URL} = import.meta.env;
 
 export const ARROWS: Arrow[] = [
     {
@@ -19,5 +18,5 @@ export const ARROWS: Arrow[] = [
     }
 ]
 
-export const getEntityUrl = (arrow: Arrow) => `${APP_URL}img/arrows/entities/${arrow.slug}.png`;
-export const getItemUrl = (arrow: Arrow) => `${APP_URL}img/arrows/items/${arrow.slug}.png`;
+export const getEntityUrl = (arrow: Arrow) => `/img/arrows/entities/${arrow.slug}.png`;
+export const getItemUrl = (arrow: Arrow) => `/img/arrows/items/${arrow.slug}.png`;
