@@ -14,6 +14,7 @@ interface PostData{
 	publishedDate: string
 	bannerImage: string
 	by: string
+	author_username: string
 }
 
 const posts = await Astro.glob<PostData>('./posts/*.md');;
@@ -29,7 +30,7 @@ const posts = await Astro.glob<PostData>('./posts/*.md');;
 		<div class="max-w-[calc(100%-4rem)] w-[calc(520px+4rem)] flex flex-col gap-8">
 			{
 				posts.map(e => (<a href={e.url} class="hover:scale-105 transition-transform"><article class="flex md:h-32 gap-4">
-					<Image src={e.frontmatter.bannerImage} alt={e.frontmatter.title + ' banner image'} class='aspect-square rounded-md overflow-hidden' fit='cover' full_height></Image>
+					<Image src={e.frontmatter.bannerImage} alt={e.frontmatter.title + ' banner image'} class='aspect-square rounded-md overflow-hidden h-32' fit='cover' full_height></Image>
 					<div class="flex-1">
 						<h2 class="text-xl">{e.frontmatter.title}</h2>
 						<div><span class="text-sm">{e.frontmatter.by}</span> - <time class="text-sm" datetime={formatISO(new Date(e.frontmatter.publishedDate))}>{format(new Date(e.frontmatter.publishedDate), 'MMMM dd, yyyy')}</time></div>
