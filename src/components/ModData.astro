@@ -24,9 +24,9 @@ const {links, modName, abstract, badges, coming_soon} = mod
     </div>
     <div class="flex flex-col gap-4">
         {links && links.length > 0 && <div class="flex gap-3">
-            {links.map(link => <a href={link.url} target="_blank" class={`text-4xl inline-block opacity-80 transform hover:opacity-100 hover:scale-125 motion-safe:transition motion-reduce:any-hover:scale-100] ${LINK_TYPES[link.type].classes ?? ''}`} style={{color: LINK_TYPES[link.type].color}}>
-                <svg viewBox={LINK_TYPES[link.type].icon.viewbox} width="1em" height="1em">
-                    {LINK_TYPES[link.type].icon.paths.map(pathObj => <path fill="currentColor" clip-rule={pathObj.clipRule} fill-rule={pathObj.fillRule} d={pathObj.path}></path>)}
+            {links.map(link => <a aria-label={`${modName} ${LINK_TYPES[link.type].website_name}`} href={link.url} target="_blank" class={`text-4xl inline-block opacity-80 transform hover:opacity-100 hover:scale-125 motion-safe:transition motion-reduce:any-hover:scale-100] ${LINK_TYPES[link.type].classes ?? ''}`} style={{color: LINK_TYPES[link.type].color}}>
+                <svg viewBox={LINK_TYPES[link.type].icon?.viewbox} width="1em" height="1em">
+                    {LINK_TYPES[link.type].icon?.paths.map(pathObj => <path fill="currentColor" clip-rule={pathObj.clipRule} fill-rule={pathObj.fillRule} d={pathObj.path}></path>)}
                 </svg>
             </a>)}
         </div>}
