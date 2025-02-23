@@ -11,7 +11,7 @@ by: Christian Duarte
 author_username: TomTobby
 ---
 
-Well, we know Minecraft's vanilla signs are classic yet only having as many signs as wood types with no colors, is a bit boring, that's why we made  [Basically Signs]() which is a mod that adds signs, a lot of signs.
+Well, we know Minecraft's vanilla signs are classic yet only having as many signs as wood types with no colors, is a bit boring, that's why we made Basically Signs which is a mod that adds signs, a lot of signs.
 
 Basically signs add over 40 (41 as of March 30th, 2024), to Minecraft, all of them unique for you to have a variety of signs to choose from. It currently adds 4 different patterns with at least 4 different colors textures each, plus a lot of miscellaneous signs.
 

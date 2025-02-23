@@ -15,7 +15,7 @@ const {title, subtitle} = Astro.props;
 </div>
 
 <script>
-    import { gsap } from "gsap";
+    import gsap from '../function/gsap';
     import { setSection } from '../function/section';
     const element = document.querySelector('[home-texts]');
     gsap.to(element, {
