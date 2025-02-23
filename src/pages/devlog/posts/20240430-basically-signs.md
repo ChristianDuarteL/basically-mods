@@ -8,6 +8,7 @@ publishedDate: '2024-04-30 07:30 PM PST'
 bannerImage: 'https://picsum.photos/1200/500'
 layout: ../../../layouts/BlogPostLayout.astro
 by: Christian Duarte
+author_username: TomTobby
 ---
 
 Well, we know Minecraft's vanilla signs are classic yet only having as many signs as wood types with no colors, is a bit boring, that's why we made  [Basically Signs]() which is a mod that adds signs, a lot of signs.
