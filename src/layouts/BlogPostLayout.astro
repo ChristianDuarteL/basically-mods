@@ -2,7 +2,7 @@
 import Header from "../components/Header.astro";
 import { format, formatISO } from 'date-fns'
 import Image from "../components/Image.astro";
-const { content: { title, subtitle, description, publishedDate, by, keywords, bannerImage } } = Astro.props;
+const { content: { title, subtitle, description, publishedDate, by, keywords, bannerImage, author_username } } = Astro.props;
 
 import baseStyles from '../styles/base.css?url';
 
@@ -32,7 +32,7 @@ import baseStyles from '../styles/base.css?url';
                         <h2 class="text-2xl">{title}</h2>
                         <h2 class="text-lg">{subtitle}</h2>
                         <span class="text-light">
-                            {by}
+                            {by} <span class="text-sm text-gray-700">({author_username})</span>
                         </span>
                         <time class="text-light text-sm" datetime={formatISO(new Date(publishedDate))}>
                             {format(new Date(publishedDate), 'MMMM dd, yyyy')}
